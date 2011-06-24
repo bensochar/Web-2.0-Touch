@@ -1,0 +1,16 @@
+<div class="toolbar">
+	<h1>Animations</h1>
+	<a class="button back" onclick="myTouch.loadPage('pages/home.php', { transition: 'slide-right' });"><span></span>Back</a>
+</div>
+<div class="content">
+	<div style="padding: 0px 10px">
+		All animations are done with CSS3 (or WebKit) which allows to utilize hardware acceleration.
+	</div>
+	<ul class="rounded">
+		<li><a href="javascript: myTouch.loadPage('pages/animations.php', { transition: 'slide-left' });">Slide Left</a></li>
+		<li><a href="javascript: myTouch.loadPage('pages/animations.php', { transition: 'slide-right' });">Slide Right</a></li>
+		<li><a href="javascript: myTouch.loadPage('pages/animations.php', { transition: 'flip-left' });">Flip Left</a></li>
+		<li><a href="javascript: myTouch.loadPage('pages/animations.php', { transition: 'flip-right' });">Flip Right</a></li>
+	</ul>
+	<div style="clear: both; height: 45px"></div>
+</div>

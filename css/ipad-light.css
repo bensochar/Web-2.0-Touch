@@ -1,0 +1,212 @@
+body {
+	margin: 0px; 
+	padding: 0px;
+	overflow: hidden;
+}
+
+/* Main Div */
+
+div.jsTouch {
+	-webkit-box-sizing: border-box;
+	overflow: hidden;
+	background: #f6f6f8 url(../images/light-stripes.jpg) repeat-x;
+	font-family: "Helvetica Neue", Helvetica;
+	border: 0px !important; 
+	padding: 0px !important;
+}
+
+div.jsTouch div.toolbar {
+	-webkit-box-sizing: border-box;
+	border-bottom: 1px solid #2d3642;
+	padding: 10px;
+	height: 45px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F5F7), to(#8f929a));
+	-webkit-box-shadow: 0px 1px 1px #eee;
+	overflow: hidden;
+	position: absolute;
+	z-index: 5;
+}
+
+div.jsTouch div.toolbar h1{
+	color: #5f646a;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	padding: 0px;
+	height: 24px;
+	line-height: 1em;
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: #dddddd 1px 1px 0;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+div.progress {
+	position: absolute;
+	margin: 100px 70px;
+	text-align: center;
+	padding: 30px 40px;
+	background: rgba(0,0,0,0.5);
+	font-family: "Helvetica Neue", Helvetica;
+	color: white;
+	font-weight: bold;
+	border-radius: 8px;
+	width: 100px;
+}
+
+/* BLACK BUTTON WITH BLUE OVERLAY */
+
+.button	{
+	position: relative;
+	top: -26px;
+	float: right;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	padding: 4px 10px;
+	-webkit-border-radius: 5px;
+	font-family:  Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	cursor: pointer;
+	margin: 0 1px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);	
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9e9e9e), to(#717882), color-stop(.04,#BCBDBF));
+	border: 1px solid #555555;
+	-webkit-box-shadow: 0px 1px 0px #cccccc;
+	height: 17px;
+	text-shadow: 1px 1px 0px #666666;
+}
+	
+.button.clicked {
+	border: 1px solid #2c5a97;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#24CCFF), to(#1A83D4), color-stop(.5,#1A88DB),color-stop(.5,#187BC7));
+}
+
+.button > span {
+	height: 22px;
+	width: 22px;
+	display: inline-block;
+	position: absolute;
+	top: 1px;
+	-webkit-background-clip: content;
+}
+
+.button.back {
+	float: left;
+	padding-left: 5px;
+	margin-left: 8px;
+}
+
+.back > span {
+	left: -7px;
+	background: -webkit-gradient(linear, left top, right bottom, from(#BCBDBF), to(#717882));
+	border-left: 1px solid #222222;
+	border-bottom: 1px solid #222222;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-transform: rotate(45deg);
+	-webkit-mask-image: -webkit-gradient(linear, left bottom, right top, from(#000000), color-stop(0.38,#000000), color-stop(0.38, transparent), to(transparent));
+}	
+
+.back.clicked > span {
+	background-image: -webkit-gradient(linear, left top, right bottom, from(#24CCFF), to(#1A83D4), color-stop(.5,#1A88DB),color-stop(.5,#187BC7));
+}
+
+.button.next {
+	float: right;
+	padding-right: 5px;
+	margin-right: 8px;
+}
+
+.next > span {
+	right: -7px;
+	background: -webkit-gradient(linear, left top, right bottom, from(#BCBDBF), to(#717882));
+	border-right: solid 1px #222222;
+	border-top: solid 1px #222222;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-transform: rotate(45deg);
+	-webkit-mask-image: -webkit-gradient(linear, right top, left bottom, from(#000000), color-stop(0.38,#000000), color-stop(0.38, transparent), to(transparent));
+	-webkit-background-clip: content
+}
+
+.next.clicked > span {
+	background-image: -webkit-gradient(linear, left top, right bottom, from(#24CCFF), to(#1A83D4), color-stop(.5,#1A88DB),color-stop(.5,#187BC7));
+}
+
+/* CONTENT ITEMS */
+	
+div.jsTouch div.content {
+	padding: 0px;
+	margin: 0px;
+	margin-top: 55px;
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
+	-webkit-transition-duration: 0;
+	-webkit-transform: translate3d(0, 0, 0);
+	color: black;
+	text-shadow: 1px 1px 0px #eeeeee;
+}	
+
+div.jsTouch div.content ul { 
+	color: black;
+    font: bold 17px "Helvetica Neue", Helvetica;
+    padding: 0px;
+    margin: 15px 10px 15px 10px;
+	-webkit-border-radius: 8px;
+	-webkit-box-shadow: 1px 1px 2px #aaa;
+}
+
+div.jsTouch div.content ul li {
+    color: #333;
+	border-left: 1px solid #777;
+	border-right: 1px solid #777;
+    border-top: 1px solid #eeeeee;
+    list-style-type: none;
+    padding: 10px;
+	margin: 0px;
+	background-color: #fff;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d2d4db), to(#bebfc5));	
+}
+
+div.jsTouch div.content ul li a {
+    color: #333;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    padding: 12px 10px 12px 10px;
+    margin: -10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+div.jsTouch div.content ul li a.clicked {
+	color: white;
+	text-shadow: 1px 1px 0px #555;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1faeef), to(#187bc8));
+}
+
+div.jsTouch div.content ul li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+    border-top: 1px solid #777 !important;
+}
+
+div.jsTouch div.content ul li:first-child a.clicked {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+div.jsTouch div.content ul li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+    border-bottom: 1px solid #777 !important;
+}
+
+div.jsTouch div.content ul li:last-child a.clicked {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}

@@ -1,0 +1,1 @@
+## Web 2.0 TouchJavaScript min framewor for Touch devices (iPhone, iPad, Android and other webkit compatible). I have originally started with jqTouch, but soon found it to be limited in features I watned to have and ease of use. ## InstallationDownload and install all files, open index.php in the mobile browser. You are good to get rolling.## DemoComing soon...
