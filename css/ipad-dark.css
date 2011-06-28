@@ -9,7 +9,7 @@ body {
 div.jsTouch {
 	-webkit-box-sizing: border-box;
 	overflow: hidden;
-	background: #777777 url(../images/dark-stripes.png);
+	background: #777777 url(../images/dark-linen.jpg);
 	font-family: "Helvetica Neue", Helvetica;
 	border: 0px !important; 
 	padding: 0px !important;
@@ -145,11 +145,13 @@ div.jsTouch div.content {
 	-webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-transition-duration: 0;
 	-webkit-transform: translate3d(0, 0, 0);
-	color: #eeeeee;
-	text-shadow: 1px 1px 0px #444444;
+	color: #ffffff;
+	text-shadow: 1px 1px 0px #333333;
 }	
 
-div.jsTouch div.content ul { 
+/* LISTS: rounded and edgetoedge */
+
+div.jsTouch div.content ul.rounded { 
 	color: white;
     font: bold 17px "Helvetica Neue", Helvetica;
     padding: 0px;
@@ -158,7 +160,7 @@ div.jsTouch div.content ul {
 	-webkit-box-shadow: 1px 1px 2px #aaa;
 }
 
-div.jsTouch div.content ul li {
+div.jsTouch div.content ul.rounded li {
     color: #fff;
 	border-left: 1px solid #333;
 	border-right: 1px solid #333;
@@ -170,7 +172,7 @@ div.jsTouch div.content ul li {
 	text-shadow: 1px 1px 0px #222222;
 }
 
-div.jsTouch div.content ul li a{
+div.jsTouch div.content ul.rounded li a{
     color: #fff;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -183,28 +185,172 @@ div.jsTouch div.content ul li a{
 	text-shadow: 1px 1px 0px #222222;
 }
 
+div.jsTouch div.content ul.edgetoedge { 
+	color: white;
+    font: bold 17px "Helvetica Neue", Helvetica;
+    padding: 0px;
+    margin: 0px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+div.jsTouch div.content ul.edgetoedge li {
+    color: #fff;
+    list-style-type: none;
+    padding: 10px;
+	margin: 0px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#575859), to(#424344));
+	text-shadow: 1px 1px 0px #222222;
+	border-bottom: 1px solid #777777;
+}
+
+div.jsTouch div.content ul.edgetoedge li a{
+    color: #fff;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    padding: 12px 10px 12px 10px;
+    margin: -10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	text-shadow: 1px 1px 0px #222222;
+}
+
+
 div.jsTouch div.content ul li a.clicked {
 	color: white;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7AD62B), to(#56961E));
 }
 
-div.jsTouch div.content ul li:first-child {
+div.jsTouch div.content ul.rounded li:first-child {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
     border-top: 1px solid #333 !important;
 }
-div.jsTouch div.content ul li:first-child a.clicked {
+div.jsTouch div.content ul.rounded li:first-child a.clicked {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 }
 
-div.jsTouch div.content ul li:last-child {
+div.jsTouch div.content ul.rounded li:last-child {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
     border-bottom: 1px solid #333 !important;
 }
 
-div.jsTouch div.content ul li:last-child a.clicked {
+div.jsTouch div.content ul.rounded li:last-child a.clicked {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
+}
+
+/* List Elements */
+
+div.jsTouch div.content ul li span.count {
+	float: right;
+	border: 2px solid white;
+	background-color: #69c417;
+	border-radius: 20px;
+	padding: 2px 5px;
+	font-size: 12px;
+	width: 15px;
+	text-align: center;
+	box-shadow: 1px 1px 0px #000000;
+}
+
+div.jsTouch div.content ul li span.arrow {
+	float: right;
+	border-top: 3px solid #efefef;
+	border-right: 3px solid #efefef;
+	-webkit-transform: rotate(45deg);
+	width: 7px;
+	height: 7px;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+div.jsTouch div.content div.edgetoedge-title {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	padding: 4px;
+	padding-left: 10px;
+	font-weight: bold;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#383A3D), to(#141414));
+	border-bottom: 1px solid #666666;
+	color: #5dd7f9;
+}
+
+/* FORMS */
+
+.search { 
+	width: 100%;
+	border: 1px solid gray;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 15px;
+	background-color: white;
+}
+
+.clear {
+	clear: both;
+}
+
+div.jsTouch div.content div.label {
+	float: left;
+	width: 70px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#323437), to(#3C3E40));
+	margin: -10px 0px -10px -10px;
+	padding: 11px 6px 14px 10px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #cecece;
+	text-shadow: 1px 1px 0px #333333;
+	text-align: right;
+	border-right: 1px solid #333333;
+}
+
+div.jsTouch div.content ul li:first-child div.label {
+	border-top-left-radius: 8px;
+}
+
+div.jsTouch div.content ul li:last-child div.label {
+	border-bottom-left-radius: 8px;
+}
+
+div.jsTouch div.content div.field {
+	padding: 0px 0px 0px 78px;
+	margin: -5px 0px -3px 0px;
+}
+
+div.jsTouch div.content input {
+	border: 0px;
+	width: 100%;
+	font-size: 18px;
+	margin: 0px;
+	padding-left: 0px; 
+	padding-right: 0px;
+	-webkit-appearance: none !important;
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+	color: white;
+	background-color: transparent;
+}
+
+div.jsTouch div.content input[type="checkbox"] {
+	width: 94px !important;
+	height: 28px !important;
+	display: block !important;
+	overflow: hidden !important;
+	margin: 2px !important;
+	margin-left: 5px;
+	position: absolute !important;
+	border: 1px solid #5E5F63 !important;
+	background-color: black;
+	-webkit-border-radius: 5px !important;
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+	-webkit-transition: all .20s !important;
+	background: #fff url(../images/on_off.png) -55px 0 no-repeat !important;
+}
+
+div.jsTouch div.content input[type="checkbox"]:checked {
+	background-position: 0px 0px !important;
 }

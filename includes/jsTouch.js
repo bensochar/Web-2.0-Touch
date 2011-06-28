@@ -62,47 +62,16 @@ function jsTouch(name, params) {
 			this._lastDiv = true;
 		}
 		$('#'+this.name)[0].style.cssText += '-webkit-perspective: 700px; overflow: hidden;';
+		
+		var comcss = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden;';
+		div_old.style.cssText = 'z-index: 0; -webkit-backface-visibility: hidden;';
+		div_new.style.cssText = 'z-index: 1; -webkit-backface-visibility: hidden;';
+		
 		switch (transition) {
-			case 'flip-right':
-				// init divs
-				div_old.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-backface-visibility: hidden; -webkit-transform: rotateY(0deg);';
-				div_new.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-backface-visibility: hidden; -webkit-transform: rotateY(180deg);';
-				div_new.innerHTML = HTML;
-				// -- need a timing function because otherwise not working
-				window.setTimeout(function() {
-					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(-180deg);';
-					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(0deg);';
-				}, 1);
-				break;
-				
-			case 'flip-left':
-				// init divs
-				div_old.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-backface-visibility: hidden; -webkit-transform: rotateY(0deg);';
-				div_new.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-backface-visibility: hidden; -webkit-transform: rotateY(-180deg);';
-				div_new.innerHTML = HTML;
-				// -- need a timing function because otherwise not working
-				window.setTimeout(function() {
-					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(180deg);';
-					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(0deg);';
-				}, 1);
-				break;
-				
-			case 'slide-right':
-				// init divs
-				div_old.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-transform: translate3d(0px, 0, 0);';
-				div_new.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-transform: translate3d(-'+ width +'px, 0, 0);';
-				div_new.innerHTML = HTML;
-				// -- need a timing function because otherwise not working
-				window.setTimeout(function() {
-					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d('+ width +'px, 0, 0);';
-					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d(0px, 0, 0);';
-				}, 1);
-				break;
-				
 			case 'slide-left':
 				// init divs
-				div_old.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-transform: translate3d(0px, 0, 0);';
-				div_new.style.cssText = 'position: absolute; width: '+ width +'px; height: '+ height +'px; overflow: hidden; -webkit-transform: translate3d('+ width +'px, 0, 0);';
+				div_old.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0);';
+				div_new.style.cssText += comcss +'-webkit-transform: translate3d('+ width +'px, 0, 0);';
 				div_new.innerHTML = HTML;
 				// -- need a timing function because otherwise not working
 				window.setTimeout(function() {
@@ -111,9 +80,115 @@ function jsTouch(name, params) {
 				}, 1);
 				break;
 				
+			case 'slide-right':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0);';
+				div_new.style.cssText += comcss +'-webkit-transform: translate3d(-'+ width +'px, 0, 0);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d('+ width +'px, 0, 0);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d(0px, 0, 0);';
+				}, 1);
+				break;
+							
+			case 'slide-down':
+				// init divs
+				div_old.style.cssText += comcss +'z-index: 1; -webkit-transform: translate3d(0, 0, 0);';
+				div_new.style.cssText += comcss +'z-index: 0; -webkit-transform: translate3d(0, 0, 0);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d(0, '+ height +'px, 0);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d(0, 0, 0);';
+				}, 1);
+				break;
+			
+			case 'slide-up':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0);';
+				div_new.style.cssText += comcss +'-webkit-transform: translate3d(0, '+ height +'px, 0);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d(0, 0, 0);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: translate3d(0, 0, 0);';
+				}, 1);
+				break;
+				
+			case 'flip-left':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: rotateY(0deg);';
+				div_new.style.cssText += comcss +'-webkit-transform: rotateY(-180deg);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(180deg);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(0deg);';
+				}, 1);
+				break;
+				
+			case 'flip-right':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: rotateY(0deg);';
+				div_new.style.cssText += comcss +'-webkit-transform: rotateY(180deg);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(-180deg);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateY(0deg);';
+				}, 1);
+				break;
+				
+			case 'flip-top':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: rotateX(0deg);';
+				div_new.style.cssText += comcss +'-webkit-transform: rotateX(180deg);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateX(-180deg);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateX(0deg);';
+				}, 1);
+				break;
+				
+			case 'flip-bottom':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: rotateX(0deg);';
+				div_new.style.cssText += comcss +'-webkit-transform: rotateX(-180deg);';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateX(180deg);';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: rotateX(0deg);';
+				}, 1);
+				break;
+				
+			case 'pop-in':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0);';
+				div_new.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0); -webkit-transform: scale(.8); opacity: 0;';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s;';
+					div_new.style.cssText += '-webkit-transition: .5s; -webkit-transform: scale(1); opacity: 1;';
+				}, 1);
+				break;
+				
+			case 'pop-out':
+				// init divs
+				div_old.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0); -webkit-transform: scale(1); opacity: 1;';
+				div_new.style.cssText += comcss +'-webkit-transform: translate3d(0, 0, 0); opacity: 0;';
+				div_new.innerHTML = HTML;
+				// -- need a timing function because otherwise not working
+				window.setTimeout(function() {
+					div_old.style.cssText += '-webkit-transition: .5s; -webkit-transform: scale(1.7); opacity: 0;';
+					div_new.style.cssText += '-webkit-transition: .5s; opacity: 1;';
+				}, 1);
+				break;
+				
 			default:
-				div_old.style.cssText = 'position: absolute; z-index: 0; width: '+ width +'px;; height: '+ height +'px; overflow: hidden; -webkit-backface-visibility: hidden;';
-				div_new.style.cssText = 'position: absolute; z-index: 1; width: '+ width +'px;; height: '+ height +'px; overflow: hidden; -webkit-backface-visibility: hidden;';
 				div_new.innerHTML = HTML;
 				break;
 		}

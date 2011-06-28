@@ -148,7 +148,9 @@ div.jsTouch div.content {
 	text-shadow: 1px 1px 0px #efefef;
 }	
 
-div.jsTouch div.content ul { 
+/* LISTS: rounded and edgetoedge */
+
+div.jsTouch div.content ul.rounded { 
 	color: black;
     font: bold 17px "Helvetica Neue", Helvetica;
     padding: 0px;
@@ -157,7 +159,7 @@ div.jsTouch div.content ul {
 	-webkit-box-shadow: 1px 1px 2px #aaa;
 }
 
-div.jsTouch div.content ul li {
+div.jsTouch div.content ul.rounded li {
     color: #333;
 	border-left: 1px solid #888;
 	border-right: 1px solid #888;
@@ -168,7 +170,37 @@ div.jsTouch div.content ul li {
 	background-color: #fff;
 }
 
-div.jsTouch div.content ul li a{
+div.jsTouch div.content ul.rounded li a{
+    color: #333;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    padding: 12px 10px 12px 10px;
+    margin: -10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+div.jsTouch div.content ul.edgetoedge { 
+	color: black;
+    font: bold 17px "Helvetica Neue", Helvetica;
+    padding: 0px;
+    margin: 0px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+div.jsTouch div.content ul.edgetoedge li {
+    color: #333;
+    border-top: 1px solid #ccc;
+    list-style-type: none;
+    padding: 10px;
+	margin: 0px;
+	background-color: #fff;
+}
+
+div.jsTouch div.content ul.edgetoedge li a{
     color: #333;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -186,22 +218,134 @@ div.jsTouch div.content ul li a.clicked {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1faeef), to(#187bc8));
 }
 
-div.jsTouch div.content ul li:first-child {
+div.jsTouch div.content ul.rounded li:first-child {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
     border-top: 1px solid #888 !important;
 }
-div.jsTouch div.content ul li:first-child a.clicked {
+div.jsTouch div.content ul.rounded li:first-child a.clicked {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 }
 
-div.jsTouch div.content ul li:last-child {
+div.jsTouch div.content ul.rounded li:last-child {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
     border-bottom: 1px solid #888 !important;
 }
-div.jsTouch div.content ul li:last-child a.clicked {
+div.jsTouch div.content ul.rounded li:last-child a.clicked {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
+}
+
+/* List Elements */
+
+div.jsTouch div.content ul li span.count {
+	float: right;
+	border: 2px solid #efefef;
+	background-color: #6c8aaf;
+	border-radius: 20px;
+	padding: 2px 5px;
+	font-size: 12px;
+	width: 15px;
+	text-align: center;
+	color: white;
+	text-shadow: 1px 1px 0px #888888;
+	-webkit-box-shadow: 0 0 4px #777777
+}
+
+div.jsTouch div.content ul li span.arrow {
+	float: right;
+	border-top: 3px solid #999999;
+	border-right: 3px solid #999999;
+	-webkit-transform: rotate(45deg);
+	width: 7px;
+	height: 7px;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+div.jsTouch div.content div.edgetoedge-title {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	padding: 4px;
+	padding-left: 10px;
+	font-weight: bold;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6E87A6), to(#6E87A6), color-stop(.5,#82A0C4));
+	border-top: 1px solid #647A96;
+	border-bottom: 1px solid #647A96;
+	color: #ffffff;
+	text-shadow: 1px 1px 0px #333333;
+}
+
+/* FORMS */
+
+.search {
+	width: 100%;
+	border: 1px solid gray;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 15px;
+	background-color: white;
+}
+
+.clear {
+	clear: both;
+}
+
+div.jsTouch div.content div.label {
+	float: left;
+	width: 70px;
+	background-color: #eff5f5;
+	margin: -10px 0px -10px -10px;
+	padding: 11px 6px 14px 10px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #414b5a;
+	text-shadow: 1px 1px 0px #ffffff;
+	text-align: right;
+	border-right: 1px solid #e2efef;
+}
+
+div.jsTouch div.content ul li:first-child div.label {
+	border-top-left-radius: 8px;
+}
+
+div.jsTouch div.content ul li:last-child div.label {
+	border-bottom-left-radius: 8px;
+}
+
+div.jsTouch div.content div.field {
+	padding: 0px 0px 0px 78px;
+	margin: -5px 0px -3px 0px;
+}
+
+div.jsTouch div.content input {
+	border: 0px;
+	width: 100%;
+	font-size: 18px;
+	margin: 0px;
+	padding-left: 0px; 
+	padding-right: 0px;
+	-webkit-appearance: none !important;
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+div.jsTouch div.content input[type="checkbox"] {
+	width: 94px !important;
+	height: 27px !important;
+	display: block !important;
+	overflow: hidden !important;
+	margin: 2px !important;
+	margin-left: 5px;
+	position: absolute !important;
+	border: 0px !important;
+	-webkit-border-radius: 5px !important;
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+	-webkit-transition: all .20s !important;
+	background: #fff url(../images/on_off.png) -55px 0 no-repeat !important;
+}
+
+div.jsTouch div.content input[type="checkbox"]:checked {
+	background-position: 0px 0px !important;
 }

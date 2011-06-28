@@ -18,7 +18,7 @@
 		External Links
 	</div>
 	<ul class="rounded">
-		<li><a href="http://web20boom.com/jsTouch">jsTouch Home Page</a></li>
+		<li><a href="http://web20boom.com/touch">Home Page</a></li>
 		<li><a href="http://web20boom.com">Web 2.0 UI Library</a></li>
 		<li><a href="http://web20boom.com/donate">Donate</a></li>
 	</ul>
