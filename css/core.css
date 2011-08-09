@@ -1,0 +1,62 @@
+.small_icon {
+	padding: 0px; 
+	margin: -5px 10px -5px 0px; 
+	width: 30px; 
+	height: 30px;
+	float: left; 
+	background-color: rgba(113, 175, 63, 0.7);
+	border-radius: 5px;
+	border: 2px solid #d1d3d4;
+}
+
+/* Bottom tabs */
+
+div.jsTouch div.tabs {
+	color: white;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	border-top: 1px solid #2d3642;
+	padding: 1px;
+	height: 45px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0,#cccccc), color-stop(.02,#353535), color-stop(.5,#2b2b2b), 
+		color-stop(.55,#222222), color-stop(1,#222222));
+	overflow: hidden;
+	bottom: 0px; 
+	position: absolute;
+	z-index: 5;
+}
+
+div.jsTouch div.tabs ul{ 
+	text-align: center;
+	color: white;
+    font: bold 10px "Helvetica Neue", Helvetica;
+    padding: 0px;
+    margin: 0px;
+	margin-top: 1px;
+}
+
+div.jsTouch div.tabs ul li, div.jsTouch div.tabs ul li a {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	overflow: hidden;
+	width: 61px; 
+	height: 40px;
+    color: #fff;
+    list-style-type: none;
+	text-shadow: 1px 1px 0px #222222;
+}
+
+div.jsTouch div.tabs ul a img{
+	width: 40px;
+	height: 40px;
+	opacity: 0.4;
+}
+
+div.jsTouch div.tabs ul a.clicked {
+	border-radius: 3px;
+	background: rgba(255,255,255,0.3);
+}
+
+div.jsTouch div.tabs ul a.clicked img{
+	opacity: 1;
+}

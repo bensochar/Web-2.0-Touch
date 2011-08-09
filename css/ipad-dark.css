@@ -6,6 +6,10 @@ body {
 
 /* Main Div */
 
+div.jsTouch a {
+	cursor: default;
+}
+
 div.jsTouch {
 	-webkit-box-sizing: border-box;
 	overflow: hidden;
@@ -15,15 +19,44 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
+div.jsTouch h2{
+	color: #fff; 
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	padding: 10px 15px 0px 15px;
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0;
+	text-overflow: ellipsis;
+}
+
+div.progress {
+	position: absolute;
+	margin: 100px 70px;
+	text-align: center;
+	padding: 30px 40px;
+	background: rgba(0,0,0,0.5);
+	font-family: "Helvetica Neue", Helvetica;
+	color: white;
+	font-weight: bold;
+	border-radius: 8px;
+	width: 100px;
+	z-index: 6;
+}
+
+/* Tool Bar */
+
 div.jsTouch div.toolbar {
 	-webkit-box-sizing: border-box;
 	border-bottom: 1px solid #2d3642;
 	padding: 10px;
 	height: 45px;
+	margin-bottom: 5px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ADADAD), color-stop(.5,#3F3F3F), color-stop(.5,#000000), color-stop(1,#555555));
 	-webkit-box-shadow: 0px 1px 1px #aaaaaa;
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	z-index: 5;
 }
 
@@ -40,19 +73,6 @@ div.jsTouch div.toolbar h1{
 	text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0;
 	text-overflow: ellipsis;
 	text-align: center;
-}
-
-div.progress {
-	position: absolute;
-	margin: 100px 70px;
-	text-align: center;
-	padding: 30px 40px;
-	background: rgba(0,0,0,0.5);
-	font-family: "Helvetica Neue", Helvetica;
-	color: white;
-	font-weight: bold;
-	border-radius: 8px;
-	width: 100px;
 }
 
 /* BLACK BUTTON WITH BLUE OVERLAY */
@@ -140,7 +160,6 @@ div.progress {
 div.jsTouch div.content {
 	padding: 0px;
 	margin: 0px;
-	margin-top: 55px;
 	-webkit-transition-property: -webkit-transform;
 	-webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-transition-duration: 0;
@@ -265,8 +284,7 @@ div.jsTouch div.content ul li span.arrow {
 	-webkit-transform: rotate(45deg);
 	width: 7px;
 	height: 7px;
-	margin-top: 5px;
-	margin-right: 5px;
+	margin: 7px;
 }
 
 div.jsTouch div.content div.edgetoedge-title {

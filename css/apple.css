@@ -6,6 +6,10 @@ body {
 
 /* Main Div */
 
+div.jsTouch a {
+	cursor: default;
+}
+
 div.jsTouch {
 	-webkit-box-sizing: border-box;
 	overflow: hidden;
@@ -20,10 +24,11 @@ div.jsTouch div.toolbar {
 	border-bottom: 1px solid #2d3642;
 	padding: 10px;
 	height: 45px;
+	margin-bottom: 5px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D5DBE3), color-stop(.6, #6e89a9), to(#6E85A2));
 	-webkit-box-shadow: 0px 1px 1px #eee;
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	z-index: 5;
 }
 
@@ -42,6 +47,18 @@ div.jsTouch div.toolbar h1{
 	text-align: center;
 }
 
+div.jsTouch h2{
+	color: #555555;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	padding: 10px 15px 0px 15px;
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: rgba(220, 220, 220, 0.4) 1px 1px 0;
+	text-overflow: ellipsis;
+}
+
 div.progress {
 	position: absolute;
 	margin: 100px 70px;
@@ -53,6 +70,7 @@ div.progress {
 	font-weight: bold;
 	border-radius: 8px;
 	width: 100px;
+	z-index: 6;
 }
 
 /* BLACK BUTTON WITH BLUE OVERLAY */
@@ -139,7 +157,6 @@ div.progress {
 div.jsTouch div.content {
 	padding: 0px;
 	margin: 0px;
-	margin-top: 55px;
 	-webkit-transition-property: -webkit-transform;
 	-webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-transition-duration: 0;

@@ -1,6 +1,6 @@
 <div class="toolbar">
 	<h1>Themes</h1>
-	<a class="button back" onclick="myTouch.loadPage('pages/home.php', { transition: 'slide-right' });"><span></span>Back</a>
+	<a class="button back" onclick="jsTouch.loadPage('pages/home.php', { transition: 'slide-right' });"><span></span>Back</a>
 </div>
 <div class="content">
 	<div style="padding: 0px 10px;">

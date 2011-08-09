@@ -6,29 +6,33 @@ body {
 
 /* Main Div */
 
+div.jsTouch a {
+	cursor: default;
+}
+
 div.jsTouch {
 	-webkit-box-sizing: border-box;
 	overflow: hidden;
-	background: #f6f6f8 url(../images/light-stripes.jpg) repeat-x;
+	background: -webkit-gradient(linear, 0% 0%, 0% 50%, from(#f6f6f6), to(#e5e5e5));
 	font-family: "Helvetica Neue", Helvetica;
 	border: 0px !important; 
 	padding: 0px !important;
 }
 
 div.jsTouch div.toolbar {
-	-webkit-box-sizing: border-box;
-	border-bottom: 1px solid #2d3642;
 	padding: 10px;
 	height: 45px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F5F7), to(#8f929a));
-	-webkit-box-shadow: 0px 1px 1px #eee;
+	margin-bottom: 5px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), color-stop(0.5, #dfe1e6), color-stop(1, #a8acb9));
+	border-bottom: 1px solid #797f90;
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	z-index: 5;
+	-webkit-box-sizing: border-box;
 }
 
 div.jsTouch div.toolbar h1{
-	color: #5f646a;
+	color: #717880;
 	white-space: nowrap;
 	overflow: hidden;
 	margin: 0;
@@ -37,9 +41,21 @@ div.jsTouch div.toolbar h1{
 	line-height: 1em;
 	font-size: 20px;
 	font-weight: bold;
-	text-shadow: #dddddd 1px 1px 0;
+	text-shadow: 1px 1px 0 #eeeeee ;
 	text-overflow: ellipsis;
 	text-align: center;
+}
+
+div.jsTouch h2{
+	color: #555555;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	padding: 10px 15px 0px 15px;
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: rgba(220, 220, 220, 0.4) 1px 1px 0;
+	text-overflow: ellipsis;
 }
 
 div.progress {
@@ -53,6 +69,7 @@ div.progress {
 	font-weight: bold;
 	border-radius: 8px;
 	width: 100px;
+	z-index: 6;
 }
 
 /* BLACK BUTTON WITH BLUE OVERLAY */
@@ -141,7 +158,6 @@ div.progress {
 div.jsTouch div.content {
 	padding: 0px;
 	margin: 0px;
-	margin-top: 55px;
 	-webkit-transition-property: -webkit-transform;
 	-webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-transition-duration: 0;
@@ -158,19 +174,19 @@ div.jsTouch div.content ul.rounded {
     padding: 0px;
     margin: 15px 10px 15px 10px;
 	-webkit-border-radius: 8px;
-	-webkit-box-shadow: 1px 1px 2px #aaa;
+	-webkit-box-shadow: 0px 1px 5px #aaa;
 }
 
 div.jsTouch div.content ul.rounded li {
     color: #333;
-	border-left: 1px solid #777;
-	border-right: 1px solid #777;
-    border-top: 1px solid #eeeeee;
+	border-left: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
+    border-top: 1px solid #cccccc;
     list-style-type: none;
     padding: 10px;
 	margin: 0px;
 	background-color: #fff;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d2d4db), to(#bebfc5));	
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fdfdfd), to(#f0f0f0));	
 }
 
 div.jsTouch div.content ul.rounded li a {
@@ -196,12 +212,12 @@ div.jsTouch div.content ul.edgetoedge {
 
 div.jsTouch div.content ul.edgetoedge li {
     color: #333;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #cccccc;
     list-style-type: none;
     padding: 10px;
 	margin: 0px;
 	background-color: #fff;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d2d4db), to(#bebfc5));	
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fdfdfd), to(#f0f0f0));	
 }
 
 div.jsTouch div.content ul li a {
@@ -224,7 +240,7 @@ div.jsTouch div.content ul li a.clicked {
 div.jsTouch div.content ul.rounded li:first-child {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
-    border-top: 1px solid #777 !important;
+    border-top: 1px solid #c9c9c9 !important;
 }
 
 div.jsTouch div.content ul.rounded li:first-child a.clicked {
@@ -235,7 +251,7 @@ div.jsTouch div.content ul.rounded li:first-child a.clicked {
 div.jsTouch div.content ul.rounded li:last-child {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
-    border-bottom: 1px solid #777 !important;
+    border-bottom: 1px solid #c9c9c9 !important;
 }
 
 div.jsTouch div.content ul.rounded li:last-child a.clicked {
@@ -276,9 +292,9 @@ div.jsTouch div.content div.edgetoedge-title {
 	padding: 4px;
 	padding-left: 10px;
 	font-weight: bold;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A0A2A9), to(#A0A2A9), color-stop(.5,#82848A));
-	border-top: 1px solid #efefef;
-	border-bottom: 1px solid #555555;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#81a8ce), to(#6089b1));
+	border-top: 1px solid #456f9a;
+	border-bottom: 1px solid #456f9a;
 	color: #ffffff;
 	text-shadow: 1px 1px 0px #666666;
 }

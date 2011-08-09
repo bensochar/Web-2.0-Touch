@@ -6,51 +6,93 @@
 * -- Developer - vitmalina@gmail.com
 */
 
-function jsTouch(name, params) {
+var jsTouch = {
+
+	init: function(name, params) {
+		var tmpTouch = new jsTouchBox(name, params);
+		if (params && typeof(params) == 'object' && params['page']) tmpTouch.loadPage(params['page']);
+		return tmpTouch;
+	},
+	
+	loadPage: function(url, params, callBack) {
+		if (window.event) {
+			// find current touch box
+			var currObj = this.getCurrentBox(window.event.target);
+			// auto add clicked class (remove previous)
+			if (window.event.currentTarget.tagName == 'A') { 
+				$('#'+ currObj.name +' a').removeClass('clicked');
+				$(window.event.currentTarget).addClass('clicked'); 
+			};
+		}
+		// if target is defined - open there
+		if (params && typeof(params) == 'object' && params['target']) {
+			window.elements[params['target']].loadPage(url, params, callBack);
+		} else {
+			currObj.loadPage(url, params, callBack);
+		}
+	},
+	
+	resize: function() {
+		for (el in window.elements) {
+			window.elements[el].resize();
+		}
+	},
+	
+	getCurrentBox: function(el) {
+		var currObj = null;
+		var tmp 	= el;
+		while (tmp.tagName != 'BODY') {
+			if (tmp.tagName == 'DIV' && window.elements[tmp.id]) {
+				currObj = window.elements[tmp.id];
+				break;
+			}
+			tmp = tmp.parentNode;
+		}
+		return currObj;
+	}
+}
+
+function jsTouchBox(name, params) {
 	// -- variables
 	this.name		= name;		// - unique name for the element
 	this.width		= ''; 	    // - if empty - then full screen
-	this.height		= ''; 	    // - if empty - then full screen
-	
+	this.height		= ''; 	    // - if empty - then full screen	
 	// -- init function
 	this.loadPage	= jsTouch_loadPage;
 	this.animate	= jsTouch_animate;
 	this.initScroll	= jsTouch_initScroll;
-	this.resize		= jsTouch_resize;
-	
+	this.initTabs	= jsTouch_initTabs;
+	this.resize		= jsTouch_resize;	
 	// -- internal variables
 	this._tmpCallBack;
 	this._tmpTimer;
 	this._lastDiv;
 		
 	function jsTouch_loadPage(url, params, callBack) {
-		// auto add clicked class
-		if (window.event) if (window.event.target.tagName == 'A') { $(window.event.target).addClass('clicked'); };
-		// -- save some temp variables
+		// -- save some temp variables		
 		this._tmpCallBack	= callBack;
 		// -- get the page
-		this._tmpTimer = window.setTimeout(function () {
-			$('#'+this.name).append('<div class="progress">Loading...</div>');
-		}, 1);
+		this._tmpTimer = window.setTimeout(new Function("$('#"+ this.name +"').append('<div class=\"progress\">Loading...</div>')"), 200);		
 		$.get(url, params, new Function("data", 
 			"$('#"+ this.name +" > .progress').remove(); "+
-			"var _tmp_trans = 'slide-left'; "+
-			"var obj = window.elements['"+ this.name +"']; "+ 
-			"clearTimeout(obj._tmpTimer); "+
-			"if (typeof(obj) == 'object') { "+
-			"	obj.animate(data, '"+ ( typeof(params) == 'object' ? params['transition'] : "") +"'); "+
-			"	if (typeof(window.elements["+ this.name +"]._tmpCallBack) == 'function') { "+
-			"		window.elements["+ this.name +"]._tmpCallBack(); "+
-			"	} "+
-			"} ")
+			"var obj = window.elements['"+ ((typeof(params) == 'object' && params['target']) ? params['target'] : this.name) +"']; "+ 
+			"if (obj && typeof(obj) == 'object') { "+
+			"	clearTimeout(obj._tmpTimer); "+
+			"	obj.animate(data, '"+ ((typeof(params) == 'object' && params['transition']) ? params['transition'] : "") +"'); "+
+			"	obj.initTabs();"+
+			"	if (obj._tmpCallBack && obj._tmpCallBack == 'function') { obj._tmpCallBack(); } "+
+			"}")
 		);
 	}
 	
 	function jsTouch_animate(HTML, transition) {
+		// get width and height of the div
 		var width  = this.width;
 		var height = this.height;
 		if (width == '')  width  = window.innerWidth;
 		if (height == '') height = window.innerHeight;
+		if (parseInt(width) < 0)  width = window.innerWidth + width;
+		if (parseInt(height) < 0) height = window.innerHeight + height;
 		// find two divs
 		if (this._lastDiv) {
 			var div_old = $('#'+ this.name +' > .jsTouch.div1')[0];
@@ -197,22 +239,68 @@ function jsTouch(name, params) {
 	}
 	
 	function jsTouch_initScroll() {
+		// make sure iScroll library is loaded
+		if (String(window.iScroll) == 'undefined') {
+			alert('You need to include iScroll.js library');
+			return;
+		}
+		// make divs scrollable
 		if (this._lastDiv) {
 			var div = $('#'+ this.name +' > .jsTouch.div1 > .content')[0];
 		} else {
 			var div = $('#'+ this.name +' > .jsTouch.div2 > .content')[0];
 		}
-		var myScroll = new iScroll(div, { desktopCompatibility: true });
+		// destroy previous scroll
+		if (this.scroll) { this.scroll.destroy(); this.scroll = null; }
+		// init scroll
+		this.scroll = new iScroll(div, { desktopCompatibility: true });
+	}
+	
+	function jsTouch_initTabs() {
+		// if there are tabs - show/hide them, create onclick function
+		$('#'+ this.name +' div.tabs a').each( function (i, el) {			
+			var tmp = String(el.href).split('#');
+			var id  = tmp[1];
+			if ($(el).hasClass('clicked')) { $('#'+id).show(); } else {	$('#'+id).hide(); }
+			$(el).click( function () {
+				var currObj = jsTouch.getCurrentBox(window.event.currentTarget);
+				$('#'+ currObj.name +' a').removeClass('clicked');
+				$(window.event.currentTarget).addClass('clicked'); 
+				// show/hide tabs
+				$('#'+ currObj.name +' div.tabs a').each( function (i, el) {			
+					var tmp = String(el.href).split('#');
+					var id  = tmp[1];
+					if ($(el).hasClass('clicked')) { $('#'+id).show(); } else {	$('#'+id).hide(); }
+				});	
+				// init scroll
+				currObj.resize();
+				currObj.initScroll();
+			});
+		});
 	}
 	
 	function jsTouch_resize() {
+		// get width and height of the div
 		var width  = this.width;
 		var height = this.height;
 		if (width == '')  width  = window.innerWidth;
 		if (height == '') height = window.innerHeight;
-		// -- apply width
+		if (parseInt(width) < 0)  width = window.innerWidth + width;
+		if (parseInt(height) < 0) height = window.innerHeight + height;
+		// -- apply width (toolbar and tabs)
+		var isToolbar = ($('#'+ this.name +' div.toolbar').length > 0 ? true : false);
+		var isTabs	  = ($('#'+ this.name +' div.tabs').length > 0 ? true : false);		
+		$('#'+ this.name).css('width', width+'px');
+		$('#'+ this.name +' div.div1').css('width', width+'px');
+		$('#'+ this.name +' div.div2').css('width', width+'px');
+		$('#'+ this.name).css('height', height+'px');
+		$('#'+ this.name +' div.div1').css('height', height+'px');
+		$('#'+ this.name +' div.div2').css('height', height+'px');		
+		// -- toolbar and tabs
 		$('#'+ this.name +' div.toolbar').css('width', width+'px');
-		$('#'+ this.name)[0].style.cssText += 'width: '+ width +'px; height: '+ height +'px;';
+		$('#'+ this.name +' div.tabs').css('width', width+'px');
+		// -- set scroll to 0, 0 (in the browser it will hide url bar)
+		window.scrollTo(0, 1);		
 	}
 	
 	// -- register in elements array
@@ -225,7 +313,7 @@ function jsTouch(name, params) {
 		for (var e in params) { this[e] = params[e]; }
 	}		
 	
-	// -- append 2 divs into the box (needed for transition
+	// -- append 2 divs into the box (needed for transitions)
 	var div1 = document.createElement('DIV');
 	var div2 = document.createElement('DIV');
 	div1.className = 'jsTouch div1';
