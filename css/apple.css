@@ -1,14 +1,4 @@
-body {
-	margin: 0px; 
-	padding: 0px;
-	overflow: hidden;
-}
-
 /* Main Div */
-
-div.jsTouch a {
-	cursor: default;
-}
 
 div.jsTouch {
 	-webkit-box-sizing: border-box;
@@ -19,35 +9,15 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
-div.jsTouch div.toolbar {
-	-webkit-box-sizing: border-box;
-	border-bottom: 1px solid #2d3642;
-	padding: 10px;
-	height: 45px;
-	margin-bottom: 5px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D5DBE3), color-stop(.6, #6e89a9), to(#6E85A2));
-	-webkit-box-shadow: 0px 1px 1px #eee;
-	overflow: hidden;
-	position: relative;
-	z-index: 5;
+div.jsTouch a {
+	cursor: default;
 }
 
-div.jsTouch div.toolbar h1{
-	color: #fff;
-	white-space: nowrap;
-	overflow: hidden;
-	margin: 0;
-	padding: 0px;
-	height: 24px;
-	line-height: 1em;
-	font-size: 20px;
-	font-weight: bold;
-	text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
-	text-overflow: ellipsis;
-	text-align: center;
+div.jsTouch h1 {
+	font-size: 18px !important;
 }
 
-div.jsTouch h2{
+div.jsTouch h1, div.jsTouch h2 {
 	color: #555555;
 	white-space: nowrap;
 	overflow: hidden;
@@ -73,6 +43,39 @@ div.progress {
 	z-index: 6;
 }
 
+/* TOOLBAR */
+
+div.jsTouch div.toolbar {
+	-webkit-box-sizing: border-box;
+	border-bottom: 1px solid #2d3642;
+	padding: 10px;
+	height: 45px;
+	margin-bottom: 5px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D5DBE3), color-stop(.6, #6e89a9), to(#6E85A2));
+	-webkit-box-shadow: 0px 1px 1px #eee;
+	overflow: hidden;
+	position: absolute;
+	z-index: 5;
+	width: auto;
+	left: 0px;
+	top: 0px;
+}
+
+div.jsTouch div.toolbar h1{
+	color: #fff;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	padding: 0px;
+	height: 24px;
+	line-height: 1em;
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
 /* BLACK BUTTON WITH BLUE OVERLAY */
 
 .button	{
@@ -94,6 +97,7 @@ div.progress {
 	border: 1px solid #5b6572;
 	-webkit-box-shadow: 0px 1px 0px #bbb;
 	height: 17px;
+	text-shadow: 0px 0px 0px #444444;
 }
 	
 .button.clicked {
@@ -163,6 +167,11 @@ div.jsTouch div.content {
 	-webkit-transform: translate3d(0, 0, 0);
 	color: black;
 	text-shadow: 1px 1px 0px #efefef;
+	position: absolute;
+	left: 0px; 
+	top: 0px;
+	right: 0px; 
+	bottom: 0px;
 }	
 
 /* LISTS: rounded and edgetoedge */
@@ -204,8 +213,6 @@ div.jsTouch div.content ul.edgetoedge {
     font: bold 17px "Helvetica Neue", Helvetica;
     padding: 0px;
     margin: 0px;
-	margin-top: -10px;
-	margin-bottom: 10px;
 }
 
 div.jsTouch div.content ul.edgetoedge li {
@@ -283,9 +290,7 @@ div.jsTouch div.content ul li span.arrow {
 }
 
 div.jsTouch div.content div.edgetoedge-title {
-	margin-top: -10px;
-	margin-bottom: 10px;
-	padding: 4px;
+	padding: 3px;
 	padding-left: 10px;
 	font-weight: bold;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6E87A6), to(#6E87A6), color-stop(.5,#82A0C4));

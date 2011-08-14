@@ -1,14 +1,4 @@
-body {
-	margin: 0px; 
-	padding: 0px;
-	overflow: hidden;
-}
-
 /* Main Div */
-
-div.jsTouch a {
-	cursor: default;
-}
 
 div.jsTouch {
 	-webkit-box-sizing: border-box;
@@ -19,7 +9,15 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
-div.jsTouch h2{
+div.jsTouch a {
+	cursor: default;
+}
+
+div.jsTouch h1 {
+	font-size: 18px !important;
+}
+
+div.jsTouch h1, div.jsTouch h2 {
 	color: #fff; 
 	white-space: nowrap;
 	overflow: hidden;
@@ -28,7 +26,6 @@ div.jsTouch h2{
 	font-size: 16px;
 	font-weight: bold;
 	text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0;
-	text-overflow: ellipsis;
 }
 
 div.progress {
@@ -45,7 +42,7 @@ div.progress {
 	z-index: 6;
 }
 
-/* Tool Bar */
+/* TOOLBAR */
 
 div.jsTouch div.toolbar {
 	-webkit-box-sizing: border-box;
@@ -56,8 +53,11 @@ div.jsTouch div.toolbar {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ADADAD), color-stop(.5,#3F3F3F), color-stop(.5,#000000), color-stop(1,#555555));
 	-webkit-box-shadow: 0px 1px 1px #aaaaaa;
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 	z-index: 5;
+	width: auto;
+	left: 0px;
+	top: 0px;
 }
 
 div.jsTouch div.toolbar h1{
@@ -166,6 +166,11 @@ div.jsTouch div.content {
 	-webkit-transform: translate3d(0, 0, 0);
 	color: #ffffff;
 	text-shadow: 1px 1px 0px #333333;
+	position: absolute;
+	left: 0px; 
+	top: 0px;
+	right: 0px; 
+	bottom: 0px;
 }	
 
 /* LISTS: rounded and edgetoedge */
@@ -209,8 +214,6 @@ div.jsTouch div.content ul.edgetoedge {
     font: bold 17px "Helvetica Neue", Helvetica;
     padding: 0px;
     margin: 0px;
-	margin-top: -10px;
-	margin-bottom: 10px;
 }
 
 div.jsTouch div.content ul.edgetoedge li {
@@ -288,9 +291,7 @@ div.jsTouch div.content ul li span.arrow {
 }
 
 div.jsTouch div.content div.edgetoedge-title {
-	margin-top: -10px;
-	margin-bottom: 10px;
-	padding: 4px;
+	padding: 6px;
 	padding-left: 10px;
 	font-weight: bold;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#383A3D), to(#141414));

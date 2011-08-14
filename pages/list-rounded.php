@@ -3,6 +3,7 @@
 	<a class="button back" onclick="jsTouch.loadPage('pages/lists.php', { transition: 'slide-right' });"><span></span>Back</a>
 </div>
 <div class="content">
+<div>
 	<ul class="rounded">
 		<li><a onclick="jsTouch.loadPage('pages/list-rounded.php', { transition: 'slide-left'});">Item 1<span class="count">4</span></a></li>
 		<li><a onclick="jsTouch.loadPage('pages/list-rounded.php', { transition: 'slide-left'});">Item 2<span class="count">6</span></a></li>
@@ -38,5 +39,6 @@
 		<li><a onclick="jsTouch.loadPage('pages/list-rounded.php', { transition: 'slide-left'});">Item 28</a></li>
 		<li><a onclick="jsTouch.loadPage('pages/list-rounded.php', { transition: 'slide-left'});">Item 29<span class="arrow"></span></a></li>
 	</ul>
-	<div style="clear: both; height: 45px"></div>
+	<div style="height: 10px"></div>
+</div>
 </div>

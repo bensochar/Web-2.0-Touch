@@ -1,14 +1,4 @@
-body {
-	margin: 0px; 
-	padding: 0px;
-	overflow: hidden;
-}
-
 /* Main Div */
-
-div.jsTouch a {
-	cursor: default;
-}
 
 div.jsTouch {
 	-webkit-box-sizing: border-box;
@@ -19,16 +9,55 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
+div.jsTouch a {
+	cursor: default;
+}
+
+div.jsTouch h1 {
+	font-size: 18px !important;
+}
+
+div.jsTouch h1, div.jsTouch h2 {
+	color: #000; 
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	padding: 10px 15px 0px 15px;
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: rgba(255, 255, 255, 0.4) 1px 1px 0;
+}
+
+div.progress {
+	position: absolute;
+	margin: 100px 70px;
+	text-align: center;
+	padding: 30px 40px;
+	background: rgba(0,0,0,0.5);
+	font-family: "Helvetica Neue", Helvetica;
+	color: white;
+	font-weight: bold;
+	border-radius: 8px;
+	width: 100px;
+	z-index: 6;
+}
+
+/* TOOLBAR */
+
 div.jsTouch div.toolbar {
+	-webkit-box-sizing: border-box;
+	border-bottom: 1px solid #797f90;
 	padding: 10px;
 	height: 45px;
 	margin-bottom: 5px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), color-stop(0.5, #dfe1e6), color-stop(1, #a8acb9));
-	border-bottom: 1px solid #797f90;
+	-webkit-box-shadow: 0px 1px 1px #aaaaaa;
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 	z-index: 5;
-	-webkit-box-sizing: border-box;
+	width: auto;
+	left: 0px;
+	top: 0px;
 }
 
 div.jsTouch div.toolbar h1{
@@ -44,32 +73,6 @@ div.jsTouch div.toolbar h1{
 	text-shadow: 1px 1px 0 #eeeeee ;
 	text-overflow: ellipsis;
 	text-align: center;
-}
-
-div.jsTouch h2{
-	color: #555555;
-	white-space: nowrap;
-	overflow: hidden;
-	margin: 0;
-	padding: 10px 15px 0px 15px;
-	font-size: 16px;
-	font-weight: bold;
-	text-shadow: rgba(220, 220, 220, 0.4) 1px 1px 0;
-	text-overflow: ellipsis;
-}
-
-div.progress {
-	position: absolute;
-	margin: 100px 70px;
-	text-align: center;
-	padding: 30px 40px;
-	background: rgba(0,0,0,0.5);
-	font-family: "Helvetica Neue", Helvetica;
-	color: white;
-	font-weight: bold;
-	border-radius: 8px;
-	width: 100px;
-	z-index: 6;
 }
 
 /* BLACK BUTTON WITH BLUE OVERLAY */
@@ -164,6 +167,11 @@ div.jsTouch div.content {
 	-webkit-transform: translate3d(0, 0, 0);
 	color: black;
 	text-shadow: 1px 1px 0px #eeeeee;
+	position: absolute;
+	left: 0px; 
+	top: 0px;
+	right: 0px; 
+	bottom: 0px;
 }	
 
 /* LISTS: rounded and edgetoedge */
@@ -206,8 +214,6 @@ div.jsTouch div.content ul.edgetoedge {
     font: bold 17px "Helvetica Neue", Helvetica;
     padding: 0px;
     margin: 0px;
-	margin-top: -10px;
-	margin-bottom: 10px;
 }
 
 div.jsTouch div.content ul.edgetoedge li {
@@ -287,9 +293,7 @@ div.jsTouch div.content ul li span.arrow {
 }
 
 div.jsTouch div.content div.edgetoedge-title {
-	margin-top: -10px;
-	margin-bottom: 10px;
-	padding: 4px;
+	padding: 3px;
 	padding-left: 10px;
 	font-weight: bold;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#81a8ce), to(#6089b1));

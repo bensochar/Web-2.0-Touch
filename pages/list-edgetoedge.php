@@ -3,6 +3,7 @@
 	<a class="button back" onclick="jsTouch.loadPage('pages/lists.php', { transition: 'slide-right' });"><span></span>Back</a>
 </div>
 <div class="content">
+<div>
 	<div class="edgetoedge-title">A</div>
 	<ul class="edgetoedge">
 		<li><a onclick="jsTouch.loadPage('pages/list-edgetoedge.php', { transition: 'slide-left' });">Item 1<span class="count">4</span></a></li>
@@ -41,5 +42,5 @@
 		<li><a onclick="jsTouch.loadPage('pages/list-edgetoedge.php', { transition: 'slide-left' });">Item 28</a></li>
 		<li><a onclick="jsTouch.loadPage('pages/list-edgetoedge.php', { transition: 'slide-left' });">Item 29<span class="arrow"></span></a></li>
 	</ul>
-	<div style="clear: both; height: 45px"></div>
+</div>
 </div>

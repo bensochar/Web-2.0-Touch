@@ -1,32 +1,45 @@
-.small_icon {
+body {
+	margin: 0px; 
+	padding: 0px;
+	overflow: hidden;
+}
+.icon {
 	padding: 0px; 
 	margin: -5px 10px -5px 0px; 
 	width: 30px; 
 	height: 30px;
 	float: left; 
+}
+.icon.greenbox {
 	background-color: rgba(113, 175, 63, 0.7);
 	border-radius: 5px;
 	border: 2px solid #d1d3d4;
 }
 
-/* Bottom tabs */
+/* Bottom Footer & Tabs */
 
-div.jsTouch div.tabs {
+div.jsTouch div.footer {
 	color: white;
 	text-align: center;
 	-webkit-box-sizing: border-box;
 	border-top: 1px solid #2d3642;
 	padding: 1px;
 	height: 45px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0,#cccccc), color-stop(.02,#353535), color-stop(.5,#2b2b2b), 
-		color-stop(.55,#222222), color-stop(1,#222222));
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		color-stop(0,#cccccc), 
+		color-stop(.02,#353535), 
+		color-stop(.5,#2b2b2b), 
+		color-stop(.55,#222222), 
+		color-stop(1,#222222));
 	overflow: hidden;
-	bottom: 0px; 
 	position: absolute;
 	z-index: 5;
+	width: auto;
+	left: 0px;
+	bottom: 0px; 
 }
 
-div.jsTouch div.tabs ul{ 
+div.jsTouch div.footer ul{ 
 	text-align: center;
 	color: white;
     font: bold 10px "Helvetica Neue", Helvetica;
@@ -35,7 +48,7 @@ div.jsTouch div.tabs ul{
 	margin-top: 1px;
 }
 
-div.jsTouch div.tabs ul li, div.jsTouch div.tabs ul li a {
+div.jsTouch div.footer ul li, div.jsTouch div.footer ul li a {
 	display: inline-block;
 	-webkit-box-sizing: border-box;
 	overflow: hidden;
@@ -46,17 +59,210 @@ div.jsTouch div.tabs ul li, div.jsTouch div.tabs ul li a {
 	text-shadow: 1px 1px 0px #222222;
 }
 
-div.jsTouch div.tabs ul a img{
+div.jsTouch div.footer ul a img{
 	width: 40px;
 	height: 40px;
 	opacity: 0.4;
 }
 
-div.jsTouch div.tabs ul a.clicked {
+div.jsTouch div.footer ul a.clicked {
 	border-radius: 3px;
 	background: rgba(255,255,255,0.3);
 }
 
-div.jsTouch div.tabs ul a.clicked img{
+div.jsTouch div.footer ul a.clicked img{
 	opacity: 1;
+}
+
+/* Overlays */
+
+div.overlay {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	z-index: 10;
+	border: 1px solid #1d263e;	
+	background: rgba(10, 18, 38, 0.8);
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 30px #333333;
+	-webkit-box-sizing: border-box;
+	font-family: helvetica;
+	overflow: hidden;
+}
+
+div.overlay .toolbar {
+    -webkit-box-sizing: border-box;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 35, 
+		from(rgba(220, 220, 220, 0.8)), 
+		color-stop(0.02, rgba(145, 148, 157, 0.8)),
+		color-stop(0.5, rgba(70, 78, 93, 0.8)),
+		color-stop(0.6, rgba(58, 65, 82, 0.8)),
+		to(rgba(10, 18, 38, 0.8)) );
+	margin: 0px; 
+    padding: 10px;
+    height: 45px;
+    -border-bottom: 1px solid #2d3642;
+	-webkit-box-shadow: 0px 0px 10px black;
+	position: relative;
+	z-index: 5;
+}
+
+div.overlay .toolbar > h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+	display: block;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
+    text-align: center;
+	padding: 0px; 
+	margin: 0px;
+    white-space: nowrap;
+    color: #fff;
+}
+
+div.overlay .toolbar > span.arrow {
+	display: block;
+	margin-top: -20px;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background: -webkit-gradient(linear, left top, right bottom, from(rgba(220, 220, 220, 0.9)), 
+		to(rgba(10, 18, 38, 0.9))); /* rgba(145, 148, 157, 0.9); */
+	border-left: 1px solid #303c5b;
+	border-top: 1px solid #303c5b;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-transform: rotate(45deg);
+	-webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.40,#000000), color-stop(0.40, transparent), to(transparent));
+}
+
+div.overlay .toolbar .button {
+	top: -43px;
+}
+
+div.overlay .footer {
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	width: auto;
+	height: 32px;
+	position: absolute;
+	overflow: hidden;
+	text-align: center;
+	color: white;
+}
+
+div.overlay .content {
+    -webkit-box-sizing: border-box;
+	margin: 0px;
+    padding: 5px;
+	width: auto;
+	left: 5px; 
+	right: 5px;
+	top: 5px;
+	bottom: 5px;
+	background-color: white;
+	-webkit-border-radius: 5px;
+	position: absolute;
+}
+
+div.overlay div.content ul.simple { 
+	color: black;
+    font: bold 17px "Helvetica Neue", Helvetica;
+    padding: 0px;
+    margin: 0px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+div.overlay div.content ul.simple li {
+    color: #333;
+    border-top: 1px solid #ccc;
+    list-style-type: none;
+    padding: 10px;
+	margin: 0px;
+	background-color: #fff;
+}
+div.overlay div.content ul.simple li a{
+    color: #333;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    padding: 12px 10px 12px 10px;
+    margin: -10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.5);
+}
+
+div.overlay div.content ul.simple li a.clicked {
+	color: white;
+	text-shadow: 1px 1px 0px #555;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1faeef), to(#187bc8));
+}
+
+/* List Elements */
+
+div.overlay div.content ul li span.count {
+	float: right;
+	border: 2px solid #efefef;
+	background-color: #6c8aaf;
+	border-radius: 20px;
+	padding: 2px 5px;
+	font-size: 12px;
+	width: 15px;
+	text-align: center;
+	color: white;
+	text-shadow: 1px 1px 0px #888888;
+	-webkit-box-shadow: 0 0 4px #777777
+}
+
+div.overlay div.content ul li span.arrow {
+	float: right;
+	border-top: 3px solid #999999;
+	border-right: 3px solid #999999;
+	-webkit-transform: rotate(45deg);
+	width: 7px;
+	height: 7px;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+div.overlay div.content div.simple-title {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	padding: 4px;
+	padding-left: 10px;
+	font-weight: bold;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6E87A6), to(#6E87A6), color-stop(.5,#82A0C4));
+	border-top: 1px solid #647A96;
+	border-bottom: 1px solid #647A96;
+	color: #ffffff;
+	text-shadow: 1px 1px 0px #333333;
+}
+
+/* Buttons */
+
+.button-gray {
+	position: relative;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	padding: 5px 10px;
+	font-family:  Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	cursor: pointer;
+	margin: 0 1px;
+	-webkit-border-radius: 5px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0.6);	
+	-webkit-box-shadow: 0px 0px 2px #aaa;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0,#496387), color-stop(.03,#9CB0CF), color-stop(.6,#455E80), color-stop(1,#5D7EAB));
+	border: 1px solid #aaa;
+	height: 17px;
+	text-shadow: 0px 0px 0px #444444;
 }

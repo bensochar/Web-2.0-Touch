@@ -32,6 +32,56 @@ var jsTouch = {
 		}
 	},
 	
+	overlayPage: function(url, params, callBack) {
+		if (window.event) {
+			// find current touch box
+			var currObj = this.getCurrentBox(window.event.target);
+			// auto add clicked class (remove previous)
+			if (window.event.currentTarget.tagName == 'A') { 
+				$('#'+ currObj.name +' a').removeClass('clicked');
+				$(window.event.currentTarget).addClass('clicked');
+			};
+		}
+		// lock secreen
+		var lock = document.createElement('div');
+		lock.id = 'overlay_lock';
+		lock.style.cssText = 'z-Index: 9; background-color: black; opacity: 0.2; position: fixed; left: 0px; top: 0px; width: '+ window.innerWidth +'px; height: '+ window.innerHeight +'px';
+		if (params['modal'] !== true) lock.onclick = function (e) { jsTouch.overlayClose(); }
+		$(document.body).append(lock);	
+		
+		var width  = 300;
+		var height = 300;
+		if (parseInt(params['width']) > 0) width  = parseInt(params['width']);
+		if (parseInt(params['height']) > 0) height = parseInt(params['height']);
+		
+		// create dialog
+		var div = document.createElement('div');
+		div.id = 'overlay_box';
+		div.className = 'overlay';
+		div.style.cssText += 'left: 10px; top: 52px; width: '+ width +'px; height: '+ height +'px; -webkit-border-radius: 5px;';
+		div.innerHTML = '<div class="content"></div>';
+		$(document.body).append(div);	
+		
+		// load dialog content
+		$.get(url, {}, function (data) {
+			$('#overlay_box').html(data);
+			// check presens of footer and toolbar
+			var isToolbar = ($('div.overlay div.toolbar').length > 0 ? true : false);
+			var isFooter  = ($('div.overlay div.footer').length > 0 ? true : false);		
+			if (isToolbar) $('div.overlay div.content').css('top', '45px');
+			if (isFooter) $('div.overlay div.content').css('bottom', '45px');
+			// init scroll
+			if (jsTouch.overlay_scroll) { jsTouch.overlay_scroll.destroy(); jsTouch.overlay_scroll.scroll = null; }
+			jsTouch.overlay_scroll = new iScroll($('div.overlay div.content')[0]);
+		});
+		
+	},
+	
+	overlayClose: function() {
+		$('#overlay_box').remove(); 
+		$('#overlay_lock').remove();
+	},
+	
 	resize: function() {
 		for (el in window.elements) {
 			window.elements[el].resize();
@@ -253,12 +303,14 @@ function jsTouchBox(name, params) {
 		// destroy previous scroll
 		if (this.scroll) { this.scroll.destroy(); this.scroll = null; }
 		// init scroll
-		this.scroll = new iScroll(div, { desktopCompatibility: true });
+		this.scroll = new iScroll(div, { desktopCompatibility: true, zoom: true });
+		window.tmp_scroll = this.scroll;
+		setTimeout(new Function("window.tmp_scroll.refresh()"), 100);
 	}
 	
 	function jsTouch_initTabs() {
 		// if there are tabs - show/hide them, create onclick function
-		$('#'+ this.name +' div.tabs a').each( function (i, el) {			
+		$('#'+ this.name +' div.footer a').each( function (i, el) {			
 			var tmp = String(el.href).split('#');
 			var id  = tmp[1];
 			if ($(el).hasClass('clicked')) { $('#'+id).show(); } else {	$('#'+id).hide(); }
@@ -267,7 +319,7 @@ function jsTouchBox(name, params) {
 				$('#'+ currObj.name +' a').removeClass('clicked');
 				$(window.event.currentTarget).addClass('clicked'); 
 				// show/hide tabs
-				$('#'+ currObj.name +' div.tabs a').each( function (i, el) {			
+				$('#'+ currObj.name +' div.footer a').each( function (i, el) {			
 					var tmp = String(el.href).split('#');
 					var id  = tmp[1];
 					if ($(el).hasClass('clicked')) { $('#'+id).show(); } else {	$('#'+id).hide(); }
@@ -287,18 +339,26 @@ function jsTouchBox(name, params) {
 		if (height == '') height = window.innerHeight;
 		if (parseInt(width) < 0)  width = window.innerWidth + width;
 		if (parseInt(height) < 0) height = window.innerHeight + height;
-		// -- apply width (toolbar and tabs)
-		var isToolbar = ($('#'+ this.name +' div.toolbar').length > 0 ? true : false);
-		var isTabs	  = ($('#'+ this.name +' div.tabs').length > 0 ? true : false);		
+
+		// make divs scrollable
+		if (this._lastDiv) { var tmp = 'div1'; } else { var tmp = 'div2'; }
+
+		var div = $('#'+ this.name +' > .jsTouch.'+ tmp +' > .content')[0];
+		var isToolbar = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > .toolbar').length > 0 ? true : false);
+		var isFooter  = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > .footer').length > 0 ? true : false);
+		if (isToolbar) $(div).css('top', '45px');
+		if (isFooter) $(div).css('bottom', '45px');
+
+		// -- apply width (toolbar and footer)
 		$('#'+ this.name).css('width', width+'px');
 		$('#'+ this.name +' div.div1').css('width', width+'px');
 		$('#'+ this.name +' div.div2').css('width', width+'px');
 		$('#'+ this.name).css('height', height+'px');
 		$('#'+ this.name +' div.div1').css('height', height+'px');
 		$('#'+ this.name +' div.div2').css('height', height+'px');		
-		// -- toolbar and tabs
+		// -- toolbar and footer
 		$('#'+ this.name +' div.toolbar').css('width', width+'px');
-		$('#'+ this.name +' div.tabs').css('width', width+'px');
+		$('#'+ this.name +' div.footer').css('width', width+'px');
 		// -- set scroll to 0, 0 (in the browser it will hide url bar)
 		window.scrollTo(0, 1);		
 	}
