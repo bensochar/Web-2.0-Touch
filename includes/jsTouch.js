@@ -42,44 +42,57 @@ var jsTouch = {
 				$(window.event.currentTarget).addClass('clicked');
 			};
 		}
+		// parse parameters
+		var width  		= 300;
+		var height 		= 300;
+		var modal 		= false;
+		var opacity 	= 0.3;		
+		var bgcolor		= 'black';
+		if (typeof(params) == 'object') {
+			if (String(params['width']) 	!= 'undefined') width		= parseInt(params['width']);
+			if (String(params['height']) 	!= 'undefined') height		= parseInt(params['height']);
+			if (String(params['modal']) 	!= 'undefined') modal 		= params['modal'];
+			if (String(params['opacity']) 	!= 'undefined') opacity		= params['opacity'];
+			if (String(params['bgcolor']) 	!= 'undefined') bgcolor		= params['bgcolor'];
+		}
 		// lock secreen
 		var lock = document.createElement('div');
 		lock.id = 'overlay_lock';
-		lock.style.cssText = 'z-Index: 9; background-color: black; opacity: 0.2; position: fixed; left: 0px; top: 0px; width: '+ window.innerWidth +'px; height: '+ window.innerHeight +'px';
-		if (params['modal'] !== true) lock.onclick = function (e) { jsTouch.overlayClose(); }
+		lock.style.cssText = 'z-Index: 9; background-color: '+ bgcolor +'; opacity: 0; position: fixed; left: 0px; top: 0px; '+
+			'-webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-transition: all .4s ease-in-out; '+
+			'width: '+ window.innerWidth +'px; height: '+ window.innerHeight +'px;';
+		if (!modal) lock.onclick = function (e) { jsTouch.overlayClose(); }
 		$(document.body).append(lock);	
-		
-		var width  = 300;
-		var height = 300;
-		if (parseInt(params['width']) > 0) width  = parseInt(params['width']);
-		if (parseInt(params['height']) > 0) height = parseInt(params['height']);
-		
-		// create dialog
+		setTimeout("$('#overlay_lock').css('opacity', '"+ opacity +"');", 1); // otherwise transition is not working
+	
+		// create overlay
 		var div = document.createElement('div');
 		div.id = 'overlay_box';
 		div.className = 'overlay';
-		div.style.cssText += 'left: 10px; top: 52px; width: '+ width +'px; height: '+ height +'px; -webkit-border-radius: 5px;';
+		div.style.cssText += 'left: 10px; top: 52px; width: '+ width +'px; height: '+ height +'px; -webkit-border-radius: 5px; '+
+			'-webkit-transition: all .4s ease-in-out; opacity: 0;';
 		div.innerHTML = '<div class="content"></div>';
 		$(document.body).append(div);	
+		setTimeout("$('#overlay_box').css('opacity', '1');", 1); // otherwise transition is not working
 		
-		// load dialog content
+		// load overlay content
 		$.get(url, {}, function (data) {
 			$('#overlay_box').html(data);
 			// check presens of footer and toolbar
 			var isToolbar = ($('div.overlay div.toolbar').length > 0 ? true : false);
 			var isFooter  = ($('div.overlay div.footer').length > 0 ? true : false);		
 			if (isToolbar) $('div.overlay div.content').css('top', '45px');
-			if (isFooter) $('div.overlay div.content').css('bottom', '45px');
+			if (isFooter) $('div.overlay div.content').css('bottom', '60px');
 			// init scroll
 			if (jsTouch.overlay_scroll) { jsTouch.overlay_scroll.destroy(); jsTouch.overlay_scroll.scroll = null; }
-			jsTouch.overlay_scroll = new iScroll($('div.overlay div.content')[0]);
-		});
-		
+			jsTouch.overlay_scroll = new iScroll($('div.overlay div.content')[0], { desktopCompatibility: true, zoom: false });
+		});		
 	},
 	
 	overlayClose: function() {
-		$('#overlay_box').remove(); 
-		$('#overlay_lock').remove();
+		$('#overlay_box').remove();
+		$('#overlay_lock')[0].style.opacity = 0;
+		setTimeout("$('#overlay_lock').remove();", 400);
 	},
 	
 	resize: function() {
@@ -123,7 +136,7 @@ function jsTouchBox(name, params) {
 		this._tmpCallBack	= callBack;
 		// -- get the page
 		this._tmpTimer = window.setTimeout(new Function("$('#"+ this.name +"').append('<div class=\"progress\">Loading...</div>')"), 200);		
-		$.get(url, params, new Function("data", 
+		$.get(url, {}, new Function("data", 
 			"$('#"+ this.name +" > .progress').remove(); "+
 			"var obj = window.elements['"+ ((typeof(params) == 'object' && params['target']) ? params['target'] : this.name) +"']; "+ 
 			"if (obj && typeof(obj) == 'object') { "+
@@ -303,7 +316,7 @@ function jsTouchBox(name, params) {
 		// destroy previous scroll
 		if (this.scroll) { this.scroll.destroy(); this.scroll = null; }
 		// init scroll
-		this.scroll = new iScroll(div, { desktopCompatibility: true, zoom: true });
+		this.scroll = new iScroll(div, { desktopCompatibility: true, zoom: false });
 		window.tmp_scroll = this.scroll;
 		setTimeout(new Function("window.tmp_scroll.refresh()"), 100);
 	}
@@ -347,7 +360,7 @@ function jsTouchBox(name, params) {
 		var isToolbar = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > .toolbar').length > 0 ? true : false);
 		var isFooter  = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > .footer').length > 0 ? true : false);
 		if (isToolbar) $(div).css('top', '45px');
-		if (isFooter) $(div).css('bottom', '45px');
+		if (isFooter) $(div).css('bottom', '50px');
 
 		// -- apply width (toolbar and footer)
 		$('#'+ this.name).css('width', width+'px');
@@ -382,5 +395,5 @@ function jsTouchBox(name, params) {
 	$('#'+this.name).append(div2);
 	
 	// -- resize events
-	window.addEventListener('resize', new Function("window.elements['"+ this.name +"'].resize()"));
+	window.addEventListener('resize', new Function("setTimeout(\"window.elements['"+ this.name +"'].resize()\", 1)"));
 }

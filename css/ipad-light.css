@@ -9,6 +9,12 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
+div.jsTouchPanel {
+	border-left: 2px solid #aaa; 
+	overflow: hidden; 
+	background-color: black;
+}
+
 div.jsTouch a {
 	cursor: default;
 }
@@ -28,30 +34,18 @@ div.jsTouch h1, div.jsTouch h2 {
 	text-shadow: rgba(255, 255, 255, 0.4) 1px 1px 0;
 }
 
-div.progress {
-	position: absolute;
-	margin: 100px 70px;
-	text-align: center;
-	padding: 30px 40px;
-	background: rgba(0,0,0,0.5);
-	font-family: "Helvetica Neue", Helvetica;
-	color: white;
-	font-weight: bold;
-	border-radius: 8px;
-	width: 100px;
-	z-index: 6;
-}
-
 /* TOOLBAR */
 
 div.jsTouch div.toolbar {
 	-webkit-box-sizing: border-box;
-	border-bottom: 1px solid #797f90;
+	border-bottom: 1px solid #868d91;
 	padding: 10px;
 	height: 45px;
 	margin-bottom: 5px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), color-stop(0.5, #dfe1e6), color-stop(1, #a8acb9));
-	-webkit-box-shadow: 0px 1px 1px #aaaaaa;
+	/* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), color-stop(0.5, #dfe1e6), color-stop(1, #a8acb9)); */
+	/* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d2e9f9), color-stop(1, #65a6d2)); */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d4d9dd), color-stop(1, #9ca0a2));
+	-webkit-box-shadow: 0px 0px 4px #bbb;
 	overflow: hidden;
 	position: absolute;
 	z-index: 5;
@@ -61,7 +55,7 @@ div.jsTouch div.toolbar {
 }
 
 div.jsTouch div.toolbar h1{
-	color: #717880;
+	color: #fff;
 	white-space: nowrap;
 	overflow: hidden;
 	margin: 0;
@@ -70,7 +64,7 @@ div.jsTouch div.toolbar h1{
 	line-height: 1em;
 	font-size: 20px;
 	font-weight: bold;
-	text-shadow: 1px 1px 0 #eeeeee ;
+	text-shadow: 1px 1px 0 #888;
 	text-overflow: ellipsis;
 	text-align: center;
 }
@@ -99,7 +93,7 @@ div.jsTouch div.toolbar h1{
 	text-shadow: 1px 1px 0px #666666;
 }
 	
-.button.clicked {
+.button:hover, .button.clicked {
 	border: 1px solid #2c5a97;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#24CCFF), to(#1A83D4), color-stop(.5,#1A88DB),color-stop(.5,#187BC7));
 }
@@ -130,7 +124,7 @@ div.jsTouch div.toolbar h1{
 	-webkit-mask-image: -webkit-gradient(linear, left bottom, right top, from(#000000), color-stop(0.38,#000000), color-stop(0.38, transparent), to(transparent));
 }	
 
-.back.clicked > span {
+.button:hover > span, .back.clicked > span {
 	background-image: -webkit-gradient(linear, left top, right bottom, from(#24CCFF), to(#1A83D4), color-stop(.5,#1A88DB),color-stop(.5,#187BC7));
 }
 
@@ -152,7 +146,7 @@ div.jsTouch div.toolbar h1{
 	-webkit-background-clip: content
 }
 
-.next.clicked > span {
+.next:hover > span, .next.clicked > span {
 	background-image: -webkit-gradient(linear, left top, right bottom, from(#24CCFF), to(#1A83D4), color-stop(.5,#1A88DB),color-stop(.5,#187BC7));
 }
 
@@ -343,35 +337,4 @@ div.jsTouch div.content ul li:last-child div.label {
 div.jsTouch div.content div.field {
 	padding: 0px 0px 0px 78px;
 	margin: -5px 0px -3px 0px;
-}
-
-div.jsTouch div.content input {
-	border: 0px;
-	width: 100%;
-	font-size: 18px;
-	margin: 0px;
-	padding-left: 0px; 
-	padding-right: 0px;
-	-webkit-appearance: none !important;
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-	background-color: transparent;
-}
-
-div.jsTouch div.content input[type="checkbox"] {
-	width: 94px !important;
-	height: 27px !important;
-	display: block !important;
-	overflow: hidden !important;
-	margin: 2px !important;
-	margin-left: 5px;
-	position: absolute !important;
-	border: 1px solid #95969a !important;
-	-webkit-border-radius: 5px !important;
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-	-webkit-transition: all .20s !important;
-	background: #fff url(../images/on_off.png) -55px 0 no-repeat !important;
-}
-
-div.jsTouch div.content input[type="checkbox"]:checked {
-	background-position: 0px 0px !important;
 }

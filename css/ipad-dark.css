@@ -9,6 +9,12 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
+div.jsTouchPanel { 
+	border-left: 2px solid #444444; 
+	overflow: hidden; 
+	background-color: black;
+}
+
 div.jsTouch a {
 	cursor: default;
 }
@@ -26,20 +32,6 @@ div.jsTouch h1, div.jsTouch h2 {
 	font-size: 16px;
 	font-weight: bold;
 	text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0;
-}
-
-div.progress {
-	position: absolute;
-	margin: 100px 70px;
-	text-align: center;
-	padding: 30px 40px;
-	background: rgba(0,0,0,0.5);
-	font-family: "Helvetica Neue", Helvetica;
-	color: white;
-	font-weight: bold;
-	border-radius: 8px;
-	width: 100px;
-	z-index: 6;
 }
 
 /* TOOLBAR */
@@ -205,7 +197,7 @@ div.jsTouch div.content ul.rounded li a{
     display: block;
     padding: 12px 10px 12px 10px;
     margin: -10px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0,0,0,0.5);	
 	text-shadow: 1px 1px 0px #222222;
 }
 
@@ -235,7 +227,7 @@ div.jsTouch div.content ul.edgetoedge li a{
     display: block;
     padding: 12px 10px 12px 10px;
     margin: -10px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0,0,0,0.5);	
 	text-shadow: 1px 1px 0px #222222;
 }
 
@@ -342,34 +334,5 @@ div.jsTouch div.content div.field {
 }
 
 div.jsTouch div.content input {
-	border: 0px;
-	width: 100%;
-	font-size: 18px;
-	margin: 0px;
-	padding-left: 0px; 
-	padding-right: 0px;
-	-webkit-appearance: none !important;
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-	color: white;
-	background-color: transparent;
-}
-
-div.jsTouch div.content input[type="checkbox"] {
-	width: 94px !important;
-	height: 28px !important;
-	display: block !important;
-	overflow: hidden !important;
-	margin: 2px !important;
-	margin-left: 5px;
-	position: absolute !important;
-	border: 1px solid #5E5F63 !important;
-	background-color: black;
-	-webkit-border-radius: 5px !important;
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-	-webkit-transition: all .20s !important;
-	background: #fff url(../images/on_off.png) -55px 0 no-repeat !important;
-}
-
-div.jsTouch div.content input[type="checkbox"]:checked {
-	background-position: 0px 0px !important;
+	color: white !important;
 }

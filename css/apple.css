@@ -9,7 +9,13 @@ div.jsTouch {
 	padding: 0px !important;
 }
 
-div.jsTouch a {
+div.jsTouchPanel {
+	border-left: 2px solid #999999; 
+	overflow: hidden; 
+	background-color: blacl;
+}
+
+div.jsTouch a { 
 	cursor: default;
 }
 
@@ -27,20 +33,6 @@ div.jsTouch h1, div.jsTouch h2 {
 	font-weight: bold;
 	text-shadow: rgba(220, 220, 220, 0.4) 1px 1px 0;
 	text-overflow: ellipsis;
-}
-
-div.progress {
-	position: absolute;
-	margin: 100px 70px;
-	text-align: center;
-	padding: 30px 40px;
-	background: rgba(0,0,0,0.5);
-	font-family: "Helvetica Neue", Helvetica;
-	color: white;
-	font-weight: bold;
-	border-radius: 8px;
-	width: 100px;
-	z-index: 6;
 }
 
 /* TOOLBAR */
@@ -340,34 +332,4 @@ div.jsTouch div.content ul li:last-child div.label {
 div.jsTouch div.content div.field {
 	padding: 0px 0px 0px 78px;
 	margin: -5px 0px -3px 0px;
-}
-
-div.jsTouch div.content input {
-	border: 0px;
-	width: 100%;
-	font-size: 18px;
-	margin: 0px;
-	padding-left: 0px; 
-	padding-right: 0px;
-	-webkit-appearance: none !important;
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-}
-
-div.jsTouch div.content input[type="checkbox"] {
-	width: 94px !important;
-	height: 27px !important;
-	display: block !important;
-	overflow: hidden !important;
-	margin: 2px !important;
-	margin-left: 5px;
-	position: absolute !important;
-	border: 0px !important;
-	-webkit-border-radius: 5px !important;
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-	-webkit-transition: all .20s !important;
-	background: #fff url(../images/on_off.png) -55px 0 no-repeat !important;
-}
-
-div.jsTouch div.content input[type="checkbox"]:checked {
-	background-position: 0px 0px !important;
 }

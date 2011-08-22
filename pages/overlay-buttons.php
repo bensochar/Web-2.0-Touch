@@ -7,6 +7,6 @@
 	</div>
 </div>
 <div class="footer">
-	<a href="javascript: alert('cannot save');" class="button-gray" style="width: 80px"> Save </a>
-	<a href="javascript: jsTouch.overlayClose();" class="button-gray" style="width: 80px"> Cancel </a>
+	<a href="javascript: alert('cannot save');" class="button-green" style="width: 110px;"> Save </a>
+	<a href="javascript: jsTouch.overlayClose();" class="button-gray" style="width: 110px;"> Cancel </a>
 </div>

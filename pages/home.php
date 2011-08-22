@@ -17,11 +17,11 @@
 				<img src="images/tabs/phone.png" class="icon greenbox"> Lists <span class="arrow"></span>
 			</a>
 		</li>
-		<li>
+		<!--li>
 			<a onclick="jsTouch.loadPage('pages/forms.php', { transition: 'slide-left' });">
 				<img src="images/tabs/search.png" class="icon greenbox"> Form Controls<span class="arrow"></span>
 			</a>
-		</li>
+		</li-->
 		<li>
 			<a onclick="jsTouch.loadPage('pages/buttons.php', { transition: 'slide-left' });">
 				<img src="images/tabs/tag.png" class="icon greenbox"> Buttons <span class="arrow"></span>
