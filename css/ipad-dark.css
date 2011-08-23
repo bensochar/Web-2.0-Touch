@@ -31,7 +31,7 @@ div.jsTouch h1, div.jsTouch h2 {
 	padding: 10px 15px 0px 15px;
 	font-size: 16px;
 	font-weight: bold;
-	text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0;
+	text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
 }
 
 /* TOOLBAR */
@@ -42,7 +42,7 @@ div.jsTouch div.toolbar {
 	padding: 10px;
 	height: 45px;
 	margin-bottom: 5px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ADADAD), color-stop(.5,#3F3F3F), color-stop(.5,#000000), color-stop(1,#555555));
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#777777), color-stop(.5,#333333), color-stop(.5,#000000), color-stop(1,#343434));
 	-webkit-box-shadow: 0px 1px 1px #aaaaaa;
 	overflow: hidden;
 	position: absolute;
@@ -62,7 +62,7 @@ div.jsTouch div.toolbar h1{
 	line-height: 1em;
 	font-size: 20px;
 	font-weight: bold;
-	text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0;
+	text-shadow: rgba(0, 0, 0, 0.5) 1px -1px 1px;
 	text-overflow: ellipsis;
 	text-align: center;
 }
@@ -88,7 +88,7 @@ div.jsTouch div.toolbar h1{
 	border: 1px solid #222222;
 	-webkit-box-shadow: 0px 1px 0px #666666;
 	height: 17px;
-	text-shadow: 1px 1px 0px #444444;
+	text-shadow: #444444 1px 1px 1px;
 }
 	
 .button.clicked {
@@ -157,7 +157,7 @@ div.jsTouch div.content {
 	-webkit-transition-duration: 0;
 	-webkit-transform: translate3d(0, 0, 0);
 	color: #ffffff;
-	text-shadow: 1px 1px 0px #333333;
+	text-shadow: #333333 1px 1px 1px;
 	position: absolute;
 	left: 0px; 
 	top: 0px;
@@ -185,7 +185,6 @@ div.jsTouch div.content ul.rounded li {
     padding: 10px;
 	margin: 0px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#575859), to(#424344));
-	text-shadow: 1px 1px 0px #222222;
 }
 
 div.jsTouch div.content ul.rounded li a{
@@ -197,8 +196,8 @@ div.jsTouch div.content ul.rounded li a{
     display: block;
     padding: 12px 10px 12px 10px;
     margin: -10px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0.5);	
-	text-shadow: 1px 1px 0px #222222;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.5);
+	text-shadow: #222222 1px 1px 1px;
 }
 
 div.jsTouch div.content ul.edgetoedge { 
@@ -214,7 +213,6 @@ div.jsTouch div.content ul.edgetoedge li {
     padding: 10px;
 	margin: 0px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#575859), to(#424344));
-	text-shadow: 1px 1px 0px #222222;
 	border-bottom: 1px solid #777777;
 }
 
@@ -228,7 +226,7 @@ div.jsTouch div.content ul.edgetoedge li a{
     padding: 12px 10px 12px 10px;
     margin: -10px;
     -webkit-tap-highlight-color: rgba(0,0,0,0.5);	
-	text-shadow: 1px 1px 0px #222222;
+	text-shadow: #222222 1px 1px 1px;
 }
 
 
@@ -315,7 +313,7 @@ div.jsTouch div.content div.label {
 	font-size: 13px;
 	font-weight: bold;
 	color: #cecece;
-	text-shadow: 1px 1px 0px #333333;
+	text-shadow: #222222 1px 1px 1px;
 	text-align: right;
 	border-right: 1px solid #333333;
 }

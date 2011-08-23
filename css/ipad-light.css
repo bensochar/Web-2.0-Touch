@@ -24,14 +24,14 @@ div.jsTouch h1 {
 }
 
 div.jsTouch h1, div.jsTouch h2 {
-	color: #000; 
+	color: #666666; 
 	white-space: nowrap;
 	overflow: hidden;
 	margin: 0;
 	padding: 10px 15px 0px 15px;
 	font-size: 16px;
 	font-weight: bold;
-	text-shadow: rgba(255, 255, 255, 0.4) 1px 1px 0;
+	text-shadow: rgba(255, 255, 255, 1) 2px 2px 2px;
 }
 
 /* TOOLBAR */
@@ -44,7 +44,7 @@ div.jsTouch div.toolbar {
 	margin-bottom: 5px;
 	/* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), color-stop(0.5, #dfe1e6), color-stop(1, #a8acb9)); */
 	/* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d2e9f9), color-stop(1, #65a6d2)); */
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d4d9dd), color-stop(1, #9ca0a2));
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d4d9dd), color-stop(0.5, #abafb0), color-stop(0.5, #9ca0a2), color-stop(1, #aab0b2));
 	-webkit-box-shadow: 0px 0px 4px #bbb;
 	overflow: hidden;
 	position: absolute;
@@ -64,7 +64,7 @@ div.jsTouch div.toolbar h1{
 	line-height: 1em;
 	font-size: 20px;
 	font-weight: bold;
-	text-shadow: 1px 1px 0 #888;
+	text-shadow: #444444 1px 1px 1px;
 	text-overflow: ellipsis;
 	text-align: center;
 }
@@ -90,7 +90,7 @@ div.jsTouch div.toolbar h1{
 	border: 1px solid #555555;
 	-webkit-box-shadow: 0px 1px 0px #cccccc;
 	height: 17px;
-	text-shadow: 1px 1px 0px #666666;
+	text-shadow: #666666 1px 1px 1px;
 }
 	
 .button:hover, .button.clicked {
@@ -160,7 +160,7 @@ div.jsTouch div.content {
 	-webkit-transition-duration: 0;
 	-webkit-transform: translate3d(0, 0, 0);
 	color: black;
-	text-shadow: 1px 1px 0px #eeeeee;
+	text-shadow: #ffffff 1px 1px 1px;
 	position: absolute;
 	left: 0px; 
 	top: 0px;
@@ -233,7 +233,7 @@ div.jsTouch div.content ul li a {
 }
 div.jsTouch div.content ul li a.clicked {
 	color: white;
-	text-shadow: 1px 1px 0px #555;
+	text-shadow: #555555 1px 1px 1px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1faeef), to(#187bc8));
 }
 
@@ -271,7 +271,7 @@ div.jsTouch div.content ul li span.count {
 	width: 15px;
 	text-align: center;
 	color: white;
-	text-shadow: 1px 1px 0px #888888;
+	text-shadow: #888888 1px 1px 1px;
 	-webkit-box-shadow: 0 0 4px #555555
 }
 
@@ -294,7 +294,7 @@ div.jsTouch div.content div.edgetoedge-title {
 	border-top: 1px solid #456f9a;
 	border-bottom: 1px solid #456f9a;
 	color: #ffffff;
-	text-shadow: 1px 1px 0px #666666;
+	text-shadow: #666666 1px 1px 1px;
 }
 
 /* FORMS */
@@ -321,7 +321,7 @@ div.jsTouch div.content div.label {
 	font-size: 13px;
 	font-weight: bold;
 	color: #555555;
-	text-shadow: 1px 1px 0px #cccccc;
+	text-shadow: #cccccc 1px 1px 1px;
 	text-align: right;
 	border-right: 1px solid #e2efef;
 }

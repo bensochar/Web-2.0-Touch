@@ -31,7 +31,7 @@ div.jsTouch h1, div.jsTouch h2 {
 	padding: 10px 15px 0px 15px;
 	font-size: 16px;
 	font-weight: bold;
-	text-shadow: rgba(220, 220, 220, 0.4) 1px 1px 0;
+	text-shadow: rgba(250, 250, 250, 1) 1px 1px 1px;
 	text-overflow: ellipsis;
 }
 
@@ -63,7 +63,7 @@ div.jsTouch div.toolbar h1{
 	line-height: 1em;
 	font-size: 20px;
 	font-weight: bold;
-	text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
+	text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
 	text-overflow: ellipsis;
 	text-align: center;
 }
@@ -89,7 +89,7 @@ div.jsTouch div.toolbar h1{
 	border: 1px solid #5b6572;
 	-webkit-box-shadow: 0px 1px 0px #bbb;
 	height: 17px;
-	text-shadow: 0px 0px 0px #444444;
+	text-shadow: #444444 1px 1px 1px;
 }
 	
 .button.clicked {
@@ -158,7 +158,7 @@ div.jsTouch div.content {
 	-webkit-transition-duration: 0;
 	-webkit-transform: translate3d(0, 0, 0);
 	color: black;
-	text-shadow: 1px 1px 0px #efefef;
+	text-shadow: #efefef 1px 1px 1px;
 	position: absolute;
 	left: 0px; 
 	top: 0px;
@@ -230,7 +230,7 @@ div.jsTouch div.content ul.edgetoedge li a{
 
 div.jsTouch div.content ul li a.clicked {
 	color: white;
-	text-shadow: 1px 1px 0px #555;
+	text-shadow: #333333 1px 1px 1px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1faeef), to(#187bc8));
 }
 
@@ -266,7 +266,7 @@ div.jsTouch div.content ul li span.count {
 	width: 15px;
 	text-align: center;
 	color: white;
-	text-shadow: 1px 1px 0px #888888;
+	text-shadow: #888888 1px 1px 1px;
 	-webkit-box-shadow: 0 0 4px #777777
 }
 
@@ -289,7 +289,7 @@ div.jsTouch div.content div.edgetoedge-title {
 	border-top: 1px solid #647A96;
 	border-bottom: 1px solid #647A96;
 	color: #ffffff;
-	text-shadow: 1px 1px 0px #333333;
+	text-shadow: #333333 1px 1px 1px;
 }
 
 /* FORMS */
@@ -316,7 +316,7 @@ div.jsTouch div.content div.label {
 	font-size: 13px;
 	font-weight: bold;
 	color: #414b5a;
-	text-shadow: 1px 1px 0px #ffffff;
+	text-shadow: #ffffff 1px 1px 1px;
 	text-align: right;
 	border-right: 1px solid #e2efef;
 }
