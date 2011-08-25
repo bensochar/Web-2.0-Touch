@@ -9,7 +9,7 @@
 		Overlays are popups that display additional information. 
 	</div>
 	<ul class="rounded">
-		<li><a onclick="jsTouch.overlayPage('pages/overlay-msg.php', { width: 300, height: 200 });">Simple Message</a></li>
+		<li><a onclick="jsTouch.overlayHTML('<div class=\'content\'>This is a short simple message.</div>', { width: 300, height: 200 });">Simple Message</a></li>
 		<li><a onclick="jsTouch.overlayPage('pages/overlay-msg2.php', { width: 300, height: 300 });">Message with Title</a></li>
 		<li><a onclick="jsTouch.overlayPage('pages/overlay-list.php');">List Items</a></li>
 		<li><a onclick="jsTouch.overlayPage('pages/overlay-buttons.php', { modal: true });">Question With Buttons</a></li>

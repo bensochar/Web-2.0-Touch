@@ -15,15 +15,7 @@ var jsTouch = {
 	},
 	
 	loadPage: function(url, params, callBack) {
-		if (window.event) {
-			// find current touch box
-			var currObj = this.getCurrentBox(window.event.target);
-			// auto add clicked class (remove previous)
-			if (window.event.currentTarget.tagName == 'A') { 
-				$('#'+ currObj.name +' a').removeClass('clicked');
-				$(window.event.currentTarget).addClass('clicked'); 
-			};
-		}
+		if (window.event) { var currObj = this.getCurrentBox(window.event.target); }
 		// if target is defined - open there
 		if (params && typeof(params) == 'object' && params['target']) {
 			window.elements[params['target']].loadPage(url, params, callBack);
@@ -32,16 +24,7 @@ var jsTouch = {
 		}
 	},
 	
-	overlayPage: function(url, params, callBack) {
-		if (window.event) {
-			// find current touch box
-			var currObj = this.getCurrentBox(window.event.target);
-			// auto add clicked class (remove previous)
-			if (window.event.currentTarget.tagName == 'A') { 
-				$('#'+ currObj.name +' a').removeClass('clicked');
-				$(window.event.currentTarget).addClass('clicked');
-			};
-		}
+	overlayHTML: function(HTML, params, callBack) {
 		// parse parameters
 		var width  		= 300;
 		var height 		= 300;
@@ -61,20 +44,34 @@ var jsTouch = {
 		lock.style.cssText = 'z-Index: 9; background-color: '+ bgcolor +'; opacity: 0; position: fixed; left: 0px; top: 0px; '+
 			'-webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-transition: all .4s ease-in-out; '+
 			'width: '+ window.innerWidth +'px; height: '+ window.innerHeight +'px;';
-		if (!modal) lock.onclick = function (e) { jsTouch.overlayClose(); }
+		if (!modal) {
+			lock.onclick = function (e) { jsTouch.overlayClose(); };
+		} else {
+			// if modal flash red background
+			lock.ontouchstart = function (e) { $('#overlay_lock')[0].style.cssText += '-webkit-transition: none; background-color: white;'; };
+			lock.ontouchend   = function (e) { $('#overlay_lock')[0].style.cssText += '-webkit-transition: all .4s ease-in-out; background-color: black;'; };
+		}
 		$(document.body).append(lock);	
 		setTimeout("$('#overlay_lock').css('opacity', '"+ opacity +"');", 1); // otherwise transition is not working
-	
+		
 		// create overlay
 		var div = document.createElement('div');
 		div.id = 'overlay_box';
 		div.className = 'overlay';
 		div.style.cssText += 'left: 10px; top: 52px; width: '+ width +'px; height: '+ height +'px; -webkit-border-radius: 5px; '+
 			'-webkit-transition: all .4s ease-in-out; opacity: 0;';
-		div.innerHTML = '<div class="content"></div>';
-		$(document.body).append(div);	
+		div.innerHTML = HTML;
+		$(document.body).append(div);			
 		setTimeout("$('#overlay_box').css('opacity', '1');", 1); // otherwise transition is not working
-		
+		// add clicked class when clicked on the link
+		$('#overlay_box a').click(new Function(
+			"$('#overlay_box a').removeClass('clicked');"+
+			"$(this).addClass('clicked');"));
+	},
+	
+	overlayPage: function(url, params, callBack) {
+		// create HTML overlay
+		this.overlayHTML('<div class="content"></div>', params, callBack);
 		// load overlay content
 		$.get(url, {}, function (data) {
 			$('#overlay_box').html(data);
@@ -86,6 +83,14 @@ var jsTouch = {
 			// init scroll
 			if (jsTouch.overlay_scroll) { jsTouch.overlay_scroll.destroy(); jsTouch.overlay_scroll.scroll = null; }
 			jsTouch.overlay_scroll = new iScroll($('div.overlay div.content')[0], { desktopCompatibility: true, zoom: false });
+			// for buttons on top do it on touch start
+			$('#overlay_box a.button').bind('touchstart', new Function(
+				"$('#overlay_box a').removeClass('clicked');"+
+				"$(this).addClass('clicked');"));
+			// add clicked class when clicked on the link
+			$('#overlay_box a').click(new Function(
+				"$('#overlay_box a').removeClass('clicked');"+
+				"$(this).addClass('clicked');"));
 		});		
 	},
 	
@@ -125,6 +130,7 @@ function jsTouchBox(name, params) {
 	this.animate	= jsTouch_animate;
 	this.initScroll	= jsTouch_initScroll;
 	this.initTabs	= jsTouch_initTabs;
+	this.initLinks	= jsTouch_initLinks;
 	this.resize		= jsTouch_resize;	
 	// -- internal variables
 	this._tmpCallBack;
@@ -143,6 +149,7 @@ function jsTouchBox(name, params) {
 			"	clearTimeout(obj._tmpTimer); "+
 			"	obj.animate(data, '"+ ((typeof(params) == 'object' && params['transition']) ? params['transition'] : "") +"'); "+
 			"	obj.initTabs();"+
+			"	obj.initLinks();"+
 			"	if (obj._tmpCallBack && obj._tmpCallBack == 'function') { obj._tmpCallBack(); } "+
 			"}")
 		);
@@ -309,9 +316,9 @@ function jsTouchBox(name, params) {
 		}
 		// make divs scrollable
 		if (this._lastDiv) {
-			var div = $('#'+ this.name +' > .jsTouch.div1 > .content')[0];
+			var div = $('#'+ this.name +' > .jsTouch.div1 > div.content')[0];
 		} else {
-			var div = $('#'+ this.name +' > .jsTouch.div2 > .content')[0];
+			var div = $('#'+ this.name +' > .jsTouch.div2 > div.content')[0];
 		}
 		// destroy previous scroll
 		if (this.scroll) { this.scroll.destroy(); this.scroll = null; }
@@ -327,8 +334,10 @@ function jsTouchBox(name, params) {
 			var tmp = String(el.href).split('#');
 			var id  = tmp[1];
 			if ($(el).hasClass('clicked')) { $('#'+id).show(); } else {	$('#'+id).hide(); }
-			$(el).click( function () {
+			$(el).bind('touchstart', function() { $(window.event.currentTarget).addClass('clicked'); });
+			$(el).click(function () {
 				var currObj = jsTouch.getCurrentBox(window.event.currentTarget);
+				// change clicked tab
 				$('#'+ currObj.name +' a').removeClass('clicked');
 				$(window.event.currentTarget).addClass('clicked'); 
 				// show/hide tabs
@@ -344,6 +353,17 @@ function jsTouchBox(name, params) {
 		});
 	}
 	
+	function jsTouch_initLinks() {
+		// toolbar imediate click
+		$('#'+ this.name +' div.toolbar a').bind('touchstart', new Function(
+			"$('#"+ this.name +" div.toolbar a, #"+ this.name +" div.content a').removeClass('clicked');"+
+			"$(this).addClass('clicked');"));
+		// list click when not scrolling
+		$('#'+ this.name +' div.toolbar a, #'+ this.name +' div.content a').click(new Function(
+			"$('#"+ this.name +" div.toolbar a, #"+ this.name +" div.content a').removeClass('clicked');"+
+			"$(this).addClass('clicked');"));
+	}
+	
 	function jsTouch_resize() {
 		// get width and height of the div
 		var width  = this.width;
@@ -356,9 +376,9 @@ function jsTouchBox(name, params) {
 		// make divs scrollable
 		if (this._lastDiv) { var tmp = 'div1'; } else { var tmp = 'div2'; }
 
-		var div = $('#'+ this.name +' > .jsTouch.'+ tmp +' > .content')[0];
-		var isToolbar = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > .toolbar').length > 0 ? true : false);
-		var isFooter  = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > .footer').length > 0 ? true : false);
+		var div = $('#'+ this.name +' > .jsTouch.'+ tmp +' > div.content')[0];
+		var isToolbar = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > div.toolbar').length > 0 ? true : false);
+		var isFooter  = ($('#'+ this.name +' > .jsTouch.'+ tmp +' > div.footer').length > 0 ? true : false);
 		if (isToolbar) $(div).css('top', '45px');
 		if (isFooter) $(div).css('bottom', '50px');
 
